@@ -1,0 +1,27 @@
+
+
+.header{
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.header input {
+    padding: 0px 20px;
+    width: 100%;
+    background-color:#D9D9D9;
+    border: none;
+    outline: none;
+    height: 30px;
+    border-radius: 10px;
+}
+
+
+.header button{
+    background-color:#D9D9D9;
+    width: 15%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
