@@ -10,10 +10,61 @@ function Account() {
                 <div className='computer_name'>Computer</div>
                 <button onClick={() => setExpand(!expand)}>Button</button>
             </div>
-          
             {expand &&
+            
       <div className='info'>
-        expanded
+        <ul className='info_list'>
+        <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Проц</h3>
+                <p>Також крутий</p>
+            </li>
+            <li>
+                <h3>Монітор</h3>
+                <p>Також крутий</p>
+            </li>
+        </ul>
+        <ul className='info_list'>
+        <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Корпус</h3>
+                <p>Крутий</p>
+            </li>
+            <li>
+                <h3>Проц</h3>
+                <p>Також крутий</p>
+            </li>
+            <li>
+                <h3>Монітор</h3>
+                <p>Також крутий</p>
+            </li>
+        </ul>
       </div>
       }
     

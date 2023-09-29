@@ -8,7 +8,6 @@
 .picture{
     width: 15%;
     background-color: #A6A6A6;
-    
     height: 30px;
     display: flex;
     align-items: center;
@@ -31,5 +30,45 @@
 }
 
 .info{
+    background-color: #A2A2A2;
     height: 300px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+}
+.info_list{
+}
+
+.info ul{
+    width: 45%;
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+}
+
+.info_list li{
+    overflow: hidden;
+    background-color:#D9D9D9;
+    margin-top: 20px;
+    display: flex;
+    border-radius: 10px;    
+}
+
+.info_list h3{
+    
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 20%;
+    background-color: #C1C1C1;
+}
+
+.info_list p{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    
 }
