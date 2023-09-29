@@ -1,13 +1,18 @@
 .account{
+    font-family: 'Fixel';
+    color: white;
     overflow: hidden;
+    align-items: center;
     justify-content: center;
-    background-color: #D9D9D9;
+    background-color: #50577A;
     border-radius: 10px;
 }
 .picture{
+    font-family: 'Fixel';
+    color: white;
+    height: 50px;
     width: 15%;
-    background-color: #A6A6A6;
-    height: 30px;
+    background-color: #50577A;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,15 +26,17 @@
 }
 
 .account button{
-    background-color:#D9D9D9;
-    width: 15%;
-    height: 30px;
+    background-color: #50577A;
+    color: white;
+    width: 5%;
+    height: 50px;
     border-radius: 10px;
     border: none;
 }
 
 .info{
-    background-color: #A2A2A2;
+    background-color: #474E68;
+    color: white;
     height: 300px;
     display: flex;
     justify-content: space-between;
@@ -48,7 +55,7 @@
 
 .info_list li{
     overflow: hidden;
-    background-color:#D9D9D9;
+    background-color:#50577A;
     margin-top: 20px;
     display: flex;
     border-radius: 10px;
@@ -60,7 +67,7 @@
     padding: 0;
     text-align: center;
     width: 20%;
-    background-color: #C1C1C1;
+    background-color: #404258;
 }
 
 .info_list p{

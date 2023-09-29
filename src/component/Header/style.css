@@ -10,16 +10,18 @@
 .header input {
     padding: 0px 20px;
     width: 100%;
-    background-color:#D9D9D9;
+    background-color: #50577A;
     border: none;
     outline: none;
     height: 30px;
     border-radius: 10px;
+    color: white;
 }
 
 
 .header button{
-    background-color:#D9D9D9;
+    background-color: #50577A;
+    color: white;
     width: 15%;
     height: 30px;
     border-radius: 10px;

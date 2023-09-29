@@ -1,3 +1,9 @@
-/* * {
-  font-family: 'Fixel';
-} */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+  background-color: #404258;
+}

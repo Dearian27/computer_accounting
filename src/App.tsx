@@ -3,17 +3,12 @@ import AccountContainer from './component/AccountContainer';
 import './App.css'
 
 function App() {
- 
-
   return (
-    <div>
+    <main style={{backgroundColor: '#404258'}}>
       <Header />
-      
       <AccountContainer />
- 
-      
-    </div>
+    </main>
   )
 }
 
-export default App
+export default App;
