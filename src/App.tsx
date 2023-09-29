@@ -1,7 +1,6 @@
-
-import './App.css'
 import Header from './component/Header';
 import AccountContainer from './component/AccountContainer';
+import './App.css'
 
 function App() {
  
