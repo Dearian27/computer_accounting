@@ -74,9 +74,15 @@ function Account() {
 									<h3>Монітор</h3>
 									<p>Також крутий</p>
 							</div>
+					</div>
 
+					<div className='control_buttons'>
+							<button>зберегти</button>
+							<button>редагувати</button>
+							<button>видалити</button>
 					</div>
 					</div>
+					
 				}
       </div>
         
