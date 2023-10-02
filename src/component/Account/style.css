@@ -42,7 +42,7 @@
     padding: 20px 5%;
     font-family: 'Fixel';
     border-radius: 10px;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .info_list{
     display: flex;
@@ -97,4 +97,17 @@
     padding: 0 10px;
     border-radius: 5px;
 
+}
+
+.control_buttons{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.control_buttons button{
+    width: 80px;
+    height: 30px;
 }

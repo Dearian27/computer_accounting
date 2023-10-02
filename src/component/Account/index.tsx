@@ -82,8 +82,18 @@ function Account() {
 									<h3>Відповідальний</h3>
 									<input readOnly={edit ? false :true} />
 							</div>
+<<<<<<< HEAD
+					</div>
+
+					<div className='control_buttons'>
+							<button>зберегти</button>
+							<button>редагувати</button>
+							<button>видалити</button>
+=======
+>>>>>>> 49432ce0ea6c4af5f168b25166979d520adceddf
 					</div>
 					</div>
+					
 				}
       </div>
         
