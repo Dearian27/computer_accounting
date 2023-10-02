@@ -9,11 +9,14 @@
     flex-direction: column;
     justify-content: center;
 }
-.invNumber {
+.field {
+    display: flex;
     color: #8892b6;
+    align-items: center;
+    gap: 3px;
 }
-.person {
-    color: #8892b6;
+.icon {
+    height: 16px;
 }
 .computer_name{
     font-family: Fixel-Bold;

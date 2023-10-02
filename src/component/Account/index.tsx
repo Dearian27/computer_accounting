@@ -10,9 +10,15 @@ function Account() {
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 						<div className='computer'>
 							<div style={{display: 'flex', gap: 20}}>
-								<div className='invNumber'>#40044004</div>
-								<div className='person'>Юрій Дзюбак</div>
-								<div className='person'>22 аудиторія</div>
+								<div className='field'>#40044004</div>
+								<div className='field'>
+									Юрій Дзюбак
+									<img className='icon' src="/user.svg" alt="person" />
+								</div>
+								<div className='field'>
+									Обчислювальний центр
+									<img className='icon' src="/pin.svg" alt="person" />
+								</div>
 							</div>
 							<div className='computer_name'>Моноблок Apple iMac 24" М1 4.5К 7‑ядер GPU 256GB Green (MJV83UA/A)</div>
 						</div>
@@ -23,7 +29,7 @@ function Account() {
 					<div className='info'>
 						<div className='info_list'>
 							<div className='info_line'>
-									<h3>Корпус</h3>
+									<h3>Назва</h3>
 									<input value={'Крутий'} />
 							</div>
 
@@ -33,7 +39,7 @@ function Account() {
 							</div>
 
 							<div className='info_line'>
-									<h3>Корпус</h3>
+									<h3>ОЗП</h3>
 									<input value={'Крутий'} />
 							</div>
 
@@ -73,7 +79,7 @@ function Account() {
 									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
-									<h3>Монітор</h3>
+									<h3>Відповідальний</h3>
 									<input readOnly={edit ? false :true} />
 							</div>
 					</div>
