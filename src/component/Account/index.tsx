@@ -39,17 +39,17 @@ function Account() {
 							</div>
 
 							<div className='info_line'>
+									<h3>Процесор</h3>
+									<input value={'Крутий'} />
+							</div>
+
+							<div className='info_line'>
+									<h3>Відеокарта</h3>
+									<input value={'Немає'} />
+							</div>
+
+							<div className='info_line'>
 									<h3>ОЗП</h3>
-									<input value={'Крутий'} />
-							</div>
-
-							<div className='info_line'>
-									<h3>Корпус</h3>
-									<input value={'Крутий'} />
-							</div>
-
-							<div className='info_line'>
-									<h3>Проц</h3>
 									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
@@ -83,10 +83,14 @@ function Account() {
 									<input readOnly={edit ? false :true} />
 							</div>
 					</div>
-					<div className='control_buttons'>
-							<button>зберегти</button>
-							<button>редагувати</button>
-							<button>видалити</button>
+
+					<div className='panel'>
+						<textarea className='notes' />
+						<div className='control_buttons'>
+								<button>зберегти</button>
+								<button>редагувати</button>
+								<button>видалити</button>
+						</div>
 					</div>
 				</div>
 				}
