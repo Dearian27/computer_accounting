@@ -12,58 +12,63 @@ function Account() {
 					</div>
         {expand &&    
 					<div className='info'>
-						<ul className='info_list'>
-							<li>
+						<div className='info_list'>
+							<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+
+							<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+
+							<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+
+							<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+
+							<div className='info_line'>
 									<h3>Проц</h3>
 									<p>Також крутий</p>
-							</li>
-							<li>
+							</div>
+							<div className='info_line'>
 									<h3>Монітор</h3>
 									<p>Також крутий</p>
-							</li>
-					</ul>
-					<ul className='info_list'>
-					<li>
+							</div>
+					
+					
+					<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+							<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+							<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+							<div className='info_line'>
 									<h3>Корпус</h3>
 									<p>Крутий</p>
-							</li>
-							<li>
+							</div>
+							<div className='info_line'>
 									<h3>Проц</h3>
 									<p>Також крутий</p>
-							</li>
-							<li>
+							</div>
+							<div className='info_line'>
 									<h3>Монітор</h3>
 									<p>Також крутий</p>
-							</li>
-						</ul>
+							</div>
+
+					</div>
 					</div>
 				}
       </div>
