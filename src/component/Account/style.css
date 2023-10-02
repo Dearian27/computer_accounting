@@ -2,27 +2,27 @@
     font-family: 'Fixel';
     color: white;
     overflow: hidden;
-    align-items: center;
-    justify-content: center;
     background-color: #50577A;
     border-radius: 10px;
-}
-.picture{
-    font-family: 'Fixel';
-    color: white;
-    height: 50px;
-    width: 15%;
-    background-color: #50577A;
+    padding: 5px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+}
+.computer {
+    /* padding-left: 10px; */
+}
+.invNumber {
+    color: #8892b6;
+}
+.person {
+    color: #8892b6;
 }
 .computer_name{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 80%;
-    padding-left: 10px;
+    padding: 10px 0;
 }
 
 .account button{
@@ -42,6 +42,7 @@
     justify-content: space-between;
     padding: 20px 5%;
     font-family: 'Fixel';
+    border-radius: 10px;
 }
 .info_list{
 }
