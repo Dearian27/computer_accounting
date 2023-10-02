@@ -9,9 +9,6 @@
     flex-direction: column;
     justify-content: center;
 }
-.computer {
-    /* padding-left: 10px; */
-}
 .invNumber {
     color: #8892b6;
 }
@@ -19,6 +16,7 @@
     color: #8892b6;
 }
 .computer_name{
+    font-family: Fixel-Bold;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -55,14 +53,16 @@
 
 
 .info_list .info_line{
-    align-items: center ;
+    align-items: center;
     display: flex;
     overflow: hidden;
     background-color:#50577A;
     margin-top: 20px;
     width: 40%;
     border-radius: 10px;
-    
+
+    padding: 5px;
+    gap: 5px;
 }
 
 .info_list h3{
@@ -72,10 +72,26 @@
     padding: 0;
     text-align: center;
     background-color: #404258;
+    font-weight: 500;
+
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.info_list p{
+.info_list input{
     margin: 0;
-    padding: 0;
     font-family: 'Fixel';
+    background: transparent;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 16px;
+    background-color: #404258;
+
+    /* padding: 0px; */
+    padding: 0 10px;
+    border-radius: 5px;
+
 }

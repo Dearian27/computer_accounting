@@ -3,7 +3,9 @@ import './style.css'
 
 function Account() {
     const [expand, setExpand] = useState(false);
-    return (
+    const [edit, setEdit] = useState(true);
+    
+		return (
         <div className="account">
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 						<div className='computer'>
@@ -22,59 +24,58 @@ function Account() {
 						<div className='info_list'>
 							<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 
 							<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 
 							<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 
 							<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 
 							<div className='info_line'>
 									<h3>Проц</h3>
-									<p>Також крутий</p>
+									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
 									<h3>Монітор</h3>
-									<p>Також крутий</p>
+									<input value={'Крутий'} />
 							</div>
 					
 					
 					<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
 									<h3>Корпус</h3>
-									<p>Крутий</p>
+									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
 									<h3>Проц</h3>
-									<p>Також крутий</p>
+									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
 									<h3>Монітор</h3>
-									<p>Також крутий</p>
+									<input readOnly={edit ? false :true} />
 							</div>
-
 					</div>
 					</div>
 				}
