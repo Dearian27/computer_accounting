@@ -37,46 +37,45 @@
 .info{
     background-color: #474E68;
     color: white;
-    height: 300px;
     display: flex;
-    justify-content: space-between;
     padding: 20px 5%;
     font-family: 'Fixel';
     border-radius: 10px;
+    justify-content: space-between;
 }
 .info_list{
-}
-
-.info ul{
-    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     list-style-type: none;
     margin: 0;
     padding:0;
+    width: 100%;
 }
 
-.info_list li{
+
+.info_list .info_line{
+    align-items: center ;
+    display: flex;
     overflow: hidden;
     background-color:#50577A;
     margin-top: 20px;
-    display: flex;
+    width: 40%;
     border-radius: 10px;
+    
 }
 
 .info_list h3{
+    width: 100px;
     font-family: 'Fixel';
     margin: 0;
     padding: 0;
     text-align: center;
-    width: 20%;
     background-color: #404258;
 }
 
 .info_list p{
     margin: 0;
     padding: 0;
-    display: flex;
-    width: 80%;
-    justify-content: center;
-    align-items: center;
     font-family: 'Fixel';
 }
