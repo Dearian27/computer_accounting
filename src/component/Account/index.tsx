@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './style.css';
 import UserImg from '/src/assets/user.svg';
 import PinImg from '/src/assets/pin.svg';
@@ -6,6 +6,14 @@ import PinImg from '/src/assets/pin.svg';
 function Account() {
     const [expand, setExpand] = useState(false);
     const [edit] = useState(true); //, setEdit
+		const [textArea, setTextArea] = useState('');
+		
+		
+		useEffect(() => {
+			if(localStorage.getItem('textarea')) {
+				setTextArea(window.localStorage.getItem('textarea') || '');
+			}
+		}, [])
 
 		return (
         <div className="account">
@@ -87,7 +95,7 @@ function Account() {
 					</div>
 
 					<div className='panel'>
-						<textarea className='notes' />
+						<textarea className='notes' value={textArea} onChange={(event) => {setTextArea(event.target.value); localStorage.setItem('textarea', textArea)}} />
 						<div className='control_buttons'>
 								<button>зберегти</button>
 								<button>редагувати</button>
