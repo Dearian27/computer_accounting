@@ -1,0 +1,128 @@
+.account{
+    font-family: 'Fixel';
+    color: white;
+    overflow: hidden;
+    background-color: #50577A;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.field {
+    display: flex;
+    color: #8892b6;
+    align-items: center;
+    gap: 3px;
+}
+.icon {
+    height: 16px;
+}
+.computer_name{
+    font-family: Fixel-Bold;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.account button{
+    background-color: #50577A;
+    color: white;
+    width: 5%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.info{
+    background-color: #474E68;
+    color: white;
+    display: flex;
+    padding: 20px 5%;
+    font-family: 'Fixel';
+    border-radius: 10px;
+    flex-wrap: wrap;
+}
+.info_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+    width: 100%;
+}
+
+
+.info_list .info_line{
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    background-color:#50577A;
+    margin-top: 20px;
+    width: 40%;
+    border-radius: 10px;
+
+    padding: 5px;
+    gap: 5px;
+}
+
+.info_list h3{
+    min-width: 140px;
+    font-family: 'Fixel';
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #404258;
+    font-weight: 500;
+
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.info_list input{
+    margin: 0;
+    font-family: 'Fixel';
+    background: transparent;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: 16px;
+    background-color: #404258;
+
+    /* padding: 0px; */
+    padding: 0 10px;
+    border-radius: 5px;
+
+}
+.panel {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.notes {
+    height: auto;
+    border-radius: 10px;
+    background-color: #404258;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: white;
+    font-family: Fixel;
+    padding: 5px;
+    width: 600px;
+}
+.control_buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.control_buttons button{
+    width: 80px;
+    height: 30px;
+}
