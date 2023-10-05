@@ -75,7 +75,7 @@ function Account() {
 									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
-									<h3>Проц</h3>
+									<h3>Локація</h3>
 									<input value={'Крутий'} />
 							</div>
 							<div className='info_line'>
