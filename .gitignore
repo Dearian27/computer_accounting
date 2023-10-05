@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 /electron
 electron
 electron/
 release
 
+=======
+>>>>>>> 7ba41fade061d056f0417dad0e0ccf551451c7ba
 # Logs
 logs
 *.log
@@ -15,8 +18,11 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+<<<<<<< HEAD
 dist-electron
 release
+=======
+>>>>>>> 7ba41fade061d056f0417dad0e0ccf551451c7ba
 *.local
 
 # Editor directories and files

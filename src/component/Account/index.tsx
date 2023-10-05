@@ -6,7 +6,7 @@ import PinImg from '/src/assets/pin.svg';
 function Account() {
     const [expand, setExpand] = useState(false);
     const [edit] = useState(true); //, setEdit
-    
+
 		return (
         <div className="account">
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>

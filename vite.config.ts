@@ -1,10 +1,14 @@
 import { defineConfig } from 'vite'
+<<<<<<< HEAD
 import path from 'node:path'
 import electron from 'vite-plugin-electron/simple'
+=======
+>>>>>>> 7ba41fade061d056f0417dad0e0ccf551451c7ba
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+<<<<<<< HEAD
   plugins: [
     react(),
     electron({
@@ -22,4 +26,7 @@ export default defineConfig({
       renderer: {},
     }),
   ],
+=======
+  plugins: [react()],
+>>>>>>> 7ba41fade061d056f0417dad0e0ccf551451c7ba
 })
