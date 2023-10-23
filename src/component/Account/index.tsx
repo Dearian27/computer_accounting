@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './style.css';
 import UserImg from '/src/assets/user.svg';
 import PinImg from '/src/assets/pin.svg';
+import Info from './Info';
 
 function Account() {
-    const [expand, setExpand] = useState(false);
-    const [edit] = useState(true); //, setEdit
-		const [textArea, setTextArea] = useState('');
-		
-		
-		useEffect(() => {
-			if(localStorage.getItem('textarea')) {
-				setTextArea(window.localStorage.getItem('textarea') || '');
-			}
-		}, [])
+    const [expand, setExpand] = useState(false);	
 
 		return (
         <div className="account">
@@ -35,74 +27,8 @@ function Account() {
 
 						<button onClick={() => setExpand(!expand)}>Button</button>
 					</div>
-        {expand &&    
-					<div className='info'>
-						<div className='info_list'>
-							<div className='info_line'>
-									<h3>Назва</h3>
-									<input value={'Крутий'} />
-							</div>
-
-							<div className='info_line'>
-									<h3>Корпус</h3>
-									<input value={'Крутий'} />
-							</div>
-
-							<div className='info_line'>
-									<h3>Процесор</h3>
-									<input value={'Крутий'} />
-							</div>
-
-							<div className='info_line'>
-									<h3>Відеокарта</h3>
-									<input value={'Немає'} />
-							</div>
-
-							<div className='info_line'>
-									<h3>ОЗП</h3>
-									<input value={'Крутий'} />
-							</div>
-							<div className='info_line'>
-									<h3>Монітор</h3>
-									<input value={'Крутий'} />
-							</div>
-					
-					
-					<div className='info_line'>
-									<h3>Корпус</h3>
-									<input value={'Крутий'} />
-							</div>
-							<div className='info_line'>
-									<h3>Корпус</h3>
-									<input value={'Крутий'} />
-							</div>
-							<div className='info_line'>
-									<h3>Корпус</h3>
-									<input value={'Крутий'} />
-							</div>
-							<div className='info_line'>
-									<h3>Корпус</h3>
-									<input value={'Крутий'} />
-							</div>
-							<div className='info_line'>
-									<h3>Локація</h3>
-									<input value={'Крутий'} />
-							</div>
-							<div className='info_line'>
-									<h3>Відповідальний</h3>
-									<input readOnly={edit ? false :true} />
-							</div>
-					</div>
-
-					<div className='panel'>
-						<textarea className='notes' value={textArea} onChange={(event) => {setTextArea(event.target.value); localStorage.setItem('textarea', textArea)}} />
-						<div className='control_buttons'>
-								<button>зберегти</button>
-								<button>редагувати</button>
-								<button>видалити</button>
-						</div>
-					</div>
-				</div>
+        {expand &&
+					<Info />
 				}
       </div>
         
