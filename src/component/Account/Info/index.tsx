@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import './styles.css';
 import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
 import { setEditMode } from "../../../../redux/slices/computer";
+import PartDetails from "../../PartDetails";
 
 type PartParams = unknown; 
 type ComputerParams = {
@@ -26,7 +27,15 @@ const data: ComputerParams[] = [
   // {type: 'Відповідальний', value: 'Крутий'},
 ]
 
-export default function Info() {
+type AccountParams = {
+	components: Array<{type: string; name: string}>;
+	responsible: string;
+	location: string;
+	history: string;
+	compName: string;
+}
+
+const Info: React.FC<AccountParams> = ({ components, responsible, location, history, compName}) => {
   const dispatch = useAppDispatch();
   const [currentPart, setCurrentPart] = useState<null | PartParams>(null);
   const { currentComponent, editMode } = useAppSelector(state => state.computer);
@@ -36,9 +45,9 @@ export default function Info() {
     dispatch(setEditMode(!editMode))
   }
   
-  const hoverHandler = () => {
+  // const hoverHandler = () => {
     
-  }
+  // }
   
   useEffect(() => {
     if(localStorage.getItem('textarea')) {
@@ -52,20 +61,20 @@ export default function Info() {
       <div className='info_list'>
         <div className="info_line">
           <h3>Назва</h3>
-          <input className={`${editMode ? "active" : ""}`} value={'value'} />
+          <input className={`${editMode ? "active" : ""}`} value={compName} />
         </div>
       {
-        data.map(comp => {
-          return <Component value={comp.value} type={comp.type} />
+        components.map(comp => {
+          return <Component value={comp.name} type={comp.type} />
         })
       }
         <div className="info_line">
           <h3>Локація</h3>
-          <input className={`${editMode ? "active" : ""}`} value={'value'} />
+          <input className={`${editMode ? "active" : ""}`} value={location} />
         </div>
         <div className="info_line">
           <h3>Відповідальний</h3>
-          <input className={`${editMode ? "active" : ""}`} value={'value'} />
+          <input className={`${editMode ? "active" : ""}`} value={responsible} />
         </div>
       </div>
       <div className='panel'>
@@ -77,29 +86,8 @@ export default function Info() {
         </div>
       </div>
     </main>
-
-    <aside className="partDetails">
-      { currentComponent ? 
-          <>
-          <div>
-            <span>currentComponent.name</span>
-          </div>
-          <div className="history">
-            <div className="item">history item</div>
-            <div className="item">history item</div>
-            <div className="item">history item</div>
-            <div className="item">history item</div>
-            <div className="item">history item</div>
-            <div className="item">history item</div>
-            <div className="item">history item</div>
-          </div>
-          </>
-        :
-        <div className="font none">
-          Виберіть деталь
-        </div>
-      }
-    </aside>
+    <PartDetails />
     </section>
   )
 }
+export default Info;

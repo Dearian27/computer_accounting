@@ -8,12 +8,12 @@ type ComputerParams = {
   responsible: string,
 }
 type userParams = {
-  computer: ComputerParams | null;
+  computers: [ComputerParams] | null;
   currentComponent: unknown;
   editMode: boolean;
 }
 const initialState: userParams = {
-  computer: null,
+  computers: null,
   currentComponent: null,
   editMode: false,
 }
@@ -22,8 +22,8 @@ const computerSlice: Slice = createSlice({
   initialState,
   name: 'computer',
   reducers: {
-    setComputer: (state: userParams, action: PayloadAction<ComputerParams>) => {
-      state.computer = action.payload;
+    setComputers: (state: userParams, action: PayloadAction<[ComputerParams]>) => {
+      state.computers = action.payload;
     },
     setCurrentComponent: (state: userParams, action: PayloadAction) => {
       state.currentComponent = action.payload;
@@ -35,4 +35,4 @@ const computerSlice: Slice = createSlice({
 })
 
 export default computerSlice.reducer;
-export const { setComputer, setCurrentComponent, setEditMode } = computerSlice.actions;
+export const { setComputers, setCurrentComponent, setEditMode } = computerSlice.actions;

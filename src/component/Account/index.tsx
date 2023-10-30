@@ -4,7 +4,15 @@ import UserImg from '/src/assets/user.svg';
 import PinImg from '/src/assets/pin.svg';
 import Info from './Info';
 
-function Account() {
+type AccountParams = {
+	components: Array<{type: string; name: string}>;
+	responsible: string;
+	location: string;
+	history: string;
+	compName: string;
+}
+
+const Account: React.FC<AccountParams> = ({ components, responsible, location, history, compName}) => {
     const [expand, setExpand] = useState(false);	
 
 		return (
@@ -14,21 +22,24 @@ function Account() {
 							<div style={{display: 'flex', gap: 20}}>
 								<div className='field'>#40044004</div>
 								<div className='field'>
-									Юрій Дзюбак
+									{responsible}
+									{/* Юрій Дзюбак */}
 									<img className='icon' src={UserImg} alt="person" />
 								</div>
 								<div className='field'>
-									Обчислювальний центр
+									{location}
+									{/* Обчислювальний центр */}
 									<img className='icon' src={PinImg} alt="person" />
 								</div>
 							</div>
-							<div className='computer_name'>Моноблок Apple iMac 24" М1 4.5К 7‑ядер GPU 256GB Green (MJV83UA/A)</div>
+							<div className='computer_name'>{compName}</div>
+							{/* <div className='computer_name'>Моноблок Apple iMac 24" М1 4.5К 7‑ядер GPU 256GB Green (MJV83UA/A)</div> */}
 						</div>
 
 						<button onClick={() => setExpand(!expand)}>Button</button>
 					</div>
         {expand &&
-					<Info />
+					<Info components={components} responsible={responsible} location={location} history={history} compName={compName} />
 				}
       </div>
         
