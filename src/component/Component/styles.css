@@ -1,0 +1,44 @@
+.info_list .info_line{
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  background-color:#50577A;
+  margin-top: 20px;
+  width: 40%;
+  border-radius: 10px;
+
+  padding: 5px;
+  gap: 5px;
+}
+
+.info_list h3{
+  min-width: 140px;
+  font-family: 'Fixel';
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #404258;
+  font-weight: 500;
+
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.info_list button{
+  cursor: pointer;
+  margin: 0;
+  font-family: 'Fixel';
+  background: transparent;
+  outline: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  background-color: #404258;
+
+  /* padding: 0px; */
+  padding: 0 10px;
+  border-radius: 5px;
+
+}
