@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './style.css';
-import UserImg from '/src/assets/user.svg';
-import PinImg from '/src/assets/pin.svg';
 import Info from './Info';
+import { FaLocationDot } from 'react-icons/fa6';
+import { BiSolidUser } from 'react-icons/bi';
 
 type AccountParams = {
+	id: string;
 	components: Array<{type: string; name: string}>;
 	responsible: string;
 	location: string;
@@ -12,11 +13,11 @@ type AccountParams = {
 	compName: string;
 }
 
-const Account: React.FC<AccountParams> = ({ components, responsible, location, history, compName}) => {
+const Account: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
     const [expand, setExpand] = useState(false);	
-
+		console.log(id)
 		return (
-        <div className="account">
+        <section id={id} className="account">
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 						<div className='computer'>
 							<div style={{display: 'flex', gap: 20}}>
@@ -24,12 +25,14 @@ const Account: React.FC<AccountParams> = ({ components, responsible, location, h
 								<div className='field'>
 									{responsible}
 									{/* Юрій Дзюбак */}
-									<img className='icon' src={UserImg} alt="person" />
+									<BiSolidUser className='icon' />
+									{/* <img className='icon' src={UserImg} alt="person" /> */}
 								</div>
 								<div className='field'>
 									{location}
 									{/* Обчислювальний центр */}
-									<img className='icon' src={PinImg} alt="person" />
+									<FaLocationDot className='icon' />
+									{/* <img className='icon' src={PinImg} alt="person" /> */}
 								</div>
 							</div>
 							<div className='computer_name'>{compName}</div>
@@ -41,7 +44,7 @@ const Account: React.FC<AccountParams> = ({ components, responsible, location, h
         {expand &&
 					<Info components={components} responsible={responsible} location={location} history={history} compName={compName} />
 				}
-      </div>
+      </section>
         
     )
 }

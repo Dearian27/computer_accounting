@@ -4,28 +4,29 @@ import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
 import { setEditMode } from "../../../../redux/slices/computer";
 import PartDetails from "../../PartDetails";
+import { BiSolidEditAlt } from "react-icons/bi";
 
 type PartParams = unknown; 
-type ComputerParams = {
-  type: string,
-  value: string,
-}
+// type ComputerParams = {
+//   type: string,
+//   value: string,
+// }
 
-const data: ComputerParams[] = [
-  {type: 'Назва', value: 'Крутий'},
-  {type: 'Корпус', value: 'Крутий'},
-  {type: 'Процесор', value: 'Крутий'},
-  {type: 'Відеокарта', value: 'Крутий'},
-  {type: 'ОЗП', value: 'Крутий'},
-  {type: 'Монітор', value: 'Крутий'},
-  {type: 'Корпус', value: 'Крутий'},
-  {type: 'Корпус', value: 'Крутий'},
-  {type: 'Корпус', value: 'Крутий'},
-  {type: 'Корпус', value: 'Крутий'},
-  {type: 'Корпус', value: 'Крутий'},
-  // {type: 'Локація', value: 'Крутий'},
-  // {type: 'Відповідальний', value: 'Крутий'},
-]
+// const data: ComputerParams[] = [
+//   {type: 'Назва', value: 'Крутий'},
+//   {type: 'Корпус', value: 'Крутий'},
+//   {type: 'Процесор', value: 'Крутий'},
+//   {type: 'Відеокарта', value: 'Крутий'},
+//   {type: 'ОЗП', value: 'Крутий'},
+//   {type: 'Монітор', value: 'Крутий'},
+//   {type: 'Корпус', value: 'Крутий'},
+//   {type: 'Корпус', value: 'Крутий'},
+//   {type: 'Корпус', value: 'Крутий'},
+//   {type: 'Корпус', value: 'Крутий'},
+//   {type: 'Корпус', value: 'Крутий'},
+//   // {type: 'Локація', value: 'Крутий'},
+//   // {type: 'Відповідальний', value: 'Крутий'},
+// ]
 
 type AccountParams = {
 	components: Array<{type: string; name: string}>;
@@ -81,7 +82,18 @@ const Info: React.FC<AccountParams> = ({ components, responsible, location, hist
         <textarea className='notes' value={textArea} onChange={(event) => {setTextArea(event.target.value); localStorage.setItem('textarea', textArea)}} />
         <div className='control_buttons'>
             <button className={`${editMode ? "active" : ""}`}>Зберегти</button>
-            <button onClick={() => editClickHandler()}>{editMode ? "Відхилити" : "Редагувати"}</button>
+            <button className={`${editMode ? "red" : ""}`} onClick={() => editClickHandler()}>
+              {editMode ? 
+              <>
+                Відхилити
+              </>
+              :
+              <>
+                Редагувати
+              </>
+              }
+              <BiSolidEditAlt className="btnIcon" color="white" /> 
+            </button>
             <button>Видалити</button>
         </div>
       </div>

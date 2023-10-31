@@ -21,9 +21,10 @@ function AccountContainer(){
 
 	return( 
 		<div className="AccountContainer">
+			<a style={{color: "white"}} href="#6537fba654fbda2476c830c3">jump link</a>
 			{ computers &&
 				computers.map((computer) => {
-					return <Account key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
+					return <Account id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
 				})
 			}
 		</div>

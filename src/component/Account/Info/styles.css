@@ -61,9 +61,26 @@
   gap: 10px;
 }
 .control_buttons button{
-  width: 80px;
-  height: 30px;
+  font-size: 16px;
+  font-family: 'Fixel';
+  font-weight: bold;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
+.control_buttons button.red {
+  border: 2px solid rgb(255, 43, 43);
+}
+.control_buttons button.green {
+  border: 2px solid rgb(43, 255, 110);
+}
+.btnIcon {
+  height: 16px;
+  width: 16px;
+}
+
 .control_buttons .active {
   background-color: aliceblue;
   color: #50577A;
@@ -117,7 +134,7 @@
   overflow: hidden;
   background-color:#50577A;
   margin-top: 20px;
-  width: 40%;
+  width: 400px;
   border-radius: 10px;
 
   padding: 5px;
@@ -127,7 +144,7 @@
   /* outline-color:white; */
   /* outline: auto; */
   /* outline-width: 1px; */
-  outline: white 2px solid;
+  outline: rgba(255, 255, 255, 0.511) 2px solid;
 }
 
 .info_list h3{
@@ -138,7 +155,6 @@
   text-align: center;
   background-color: #404258;
   font-weight: 500;
-
   padding: 5px;
   border-radius: 5px;
 }
@@ -153,7 +169,7 @@
   height: 100%;
   width: 100%;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   background-color: #404258;
   padding: 0 10px;
   border-radius: 5px;
