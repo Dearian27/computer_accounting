@@ -69,21 +69,25 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  border: 2px solid #50577A;
 }
 .control_buttons button.red {
-  border: 2px solid rgb(255, 43, 43);
+  border: 2px solid aliceblue;
 }
+
 .control_buttons button.green {
   border: 2px solid rgb(43, 255, 110);
 }
+
 .btnIcon {
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
 }
 
 .control_buttons .active {
   background-color: aliceblue;
   color: #50577A;
+  border: 2px solid aliceblue;
 }
 .partDetails {
   padding: 5px;

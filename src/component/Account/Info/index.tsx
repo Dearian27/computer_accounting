@@ -5,6 +5,11 @@ import Component from "../../Component";
 import { setEditMode } from "../../../../redux/slices/computer";
 import PartDetails from "../../PartDetails";
 import { BiSolidEditAlt } from "react-icons/bi";
+import { MdDeleteSweep } from "react-icons/md";
+import { MdCreate } from "react-icons/md";
+import { MdSaveAs } from "react-icons/md";
+
+import { AiOutlineClose } from "react-icons/ai";
 
 type PartParams = unknown; 
 // type ComputerParams = {
@@ -81,20 +86,31 @@ const Info: React.FC<AccountParams> = ({ components, responsible, location, hist
       <div className='panel'>
         <textarea className='notes' value={textArea} onChange={(event) => {setTextArea(event.target.value); localStorage.setItem('textarea', textArea)}} />
         <div className='control_buttons'>
-            <button className={`${editMode ? "active" : ""}`}>Зберегти</button>
-            <button className={`${editMode ? "red" : ""}`} onClick={() => editClickHandler()}>
-              {editMode ? 
+            <button className={`${editMode ? "active" : ""}`}>
+            {editMode ? 
               <>
-                Відхилити
+                <MdSaveAs  className="btnIcon" color="#50577A"  />
               </>
               :
               <>
-                Редагувати
+                <MdSaveAs  className="btnIcon" color="aliceblue"  />
               </>
               }
-              <BiSolidEditAlt className="btnIcon" color="white" /> 
             </button>
-            <button>Видалити</button>
+
+            <button className={`${editMode ? "red" : ""}`} onClick={() => editClickHandler()}>
+              {editMode ? 
+              <>
+                <AiOutlineClose className="btnIcon" color="aliceblue" />
+              </>
+              :
+              <>
+                <MdCreate className="btnIcon" color="aliceblue" />
+              </>
+              }
+              
+            </button>
+            <button><MdDeleteSweep className="btnIcon" color="aliceblue"/></button>
         </div>
       </div>
     </main>
