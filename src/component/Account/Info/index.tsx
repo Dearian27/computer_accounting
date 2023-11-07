@@ -12,29 +12,9 @@ import { MdSaveAs } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 
 type PartParams = unknown; 
-// type ComputerParams = {
-//   type: string,
-//   value: string,
-// }
-
-// const data: ComputerParams[] = [
-//   {type: 'Назва', value: 'Крутий'},
-//   {type: 'Корпус', value: 'Крутий'},
-//   {type: 'Процесор', value: 'Крутий'},
-//   {type: 'Відеокарта', value: 'Крутий'},
-//   {type: 'ОЗП', value: 'Крутий'},
-//   {type: 'Монітор', value: 'Крутий'},
-//   {type: 'Корпус', value: 'Крутий'},
-//   {type: 'Корпус', value: 'Крутий'},
-//   {type: 'Корпус', value: 'Крутий'},
-//   {type: 'Корпус', value: 'Крутий'},
-//   {type: 'Корпус', value: 'Крутий'},
-//   // {type: 'Локація', value: 'Крутий'},
-//   // {type: 'Відповідальний', value: 'Крутий'},
-// ]
 
 type AccountParams = {
-	components: Array<{type: string; name: string}>;
+	components: Array<[{type: string; name: string, id: [string]}]>;
 	responsible: string;
 	location: string;
 	history: string;
@@ -44,9 +24,9 @@ type AccountParams = {
 const Info: React.FC<AccountParams> = ({ components, responsible, location, history, compName}) => {
   const dispatch = useAppDispatch();
   const [currentPart, setCurrentPart] = useState<null | PartParams>(null);
-  const { currentComponent, editMode } = useAppSelector(state => state.computer);
+  const { allComponents, editMode } = useAppSelector(state => state.computer);
   const [textArea, setTextArea] = useState('');
-
+  
   const editClickHandler = () => {
     dispatch(setEditMode(!editMode))
   }
@@ -67,21 +47,27 @@ const Info: React.FC<AccountParams> = ({ components, responsible, location, hist
       <div className='info_list'>
         <div className="info_line">
           <h3>Назва</h3>
-          <input className={`${editMode ? "active" : ""}`} value={compName} />
+          <input className={`${editMode ? "active" : ""}`} value={compName} onChange={() => {}} readOnly={!editMode} />
         </div>
-      {
-        components.map(comp => {
-          return <Component value={comp.name} type={comp.type} />
-        })
-      }
         <div className="info_line">
           <h3>Локація</h3>
-          <input className={`${editMode ? "active" : ""}`} value={location} />
+          <input className={`${editMode ? "active" : ""}`} value={location} onChange={() => {}} readOnly={!editMode} />
         </div>
         <div className="info_line">
           <h3>Відповідальний</h3>
-          <input className={`${editMode ? "active" : ""}`} value={responsible} />
+          <input className={`${editMode ? "active" : ""}`} value={responsible} onChange={() => {}} readOnly={!editMode} />
         </div>
+      { components &&
+        components.map((componentsOneType, index) => {
+          if(componentsOneType?.id && componentsOneType?.id.length > 0) {
+            return componentsOneType.id.map(c => {
+              return <Component key={c} name={allComponents.find(comp => comp._id === c).name} type={componentsOneType.type} />
+            })
+          } else {
+            return <Component key={index} name={""} type={componentsOneType.type} />
+          }
+        })
+      }
       </div>
       <div className='panel'>
         <textarea className='notes' value={textArea} onChange={(event) => {setTextArea(event.target.value); localStorage.setItem('textarea', textArea)}} />

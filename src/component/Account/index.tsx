@@ -6,7 +6,7 @@ import { BiSolidUser } from 'react-icons/bi';
 
 type AccountParams = {
 	id: string;
-	components: Array<{type: string; name: string}>;
+	components: Array<[{type: string; name: string}]>;
 	responsible: string;
 	location: string;
 	history: string;
@@ -15,7 +15,7 @@ type AccountParams = {
 
 const Account: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
     const [expand, setExpand] = useState(false);	
-		console.log(id)
+
 		return (
         <section id={id} className="account">
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>

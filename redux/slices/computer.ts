@@ -7,17 +7,26 @@ type ComputerParams = {
   location: string,
   responsible: string,
 }
+type componentsParams = Array<{
+  anchor: string,
+  _id: string,
+  createdAt: string,
+  updatedAt: string,
+  name: string,
+  type: string,
+  __v: number
+}>;
+
 type userParams = {
-  computers: [ComputerParams] | null;
-  currentComponent: unknown;
-  editMode: boolean;
+  computers: [ComputerParams] | null,
+  allComponents: componentsParams,
+  editMode: boolean,
 }
 const initialState: userParams = {
   computers: null,
-  currentComponent: null,
+  allComponents: [],
   editMode: false,
 }
-
 const computerSlice: Slice = createSlice({
   initialState,
   name: 'computer',
@@ -25,8 +34,8 @@ const computerSlice: Slice = createSlice({
     setComputers: (state: userParams, action: PayloadAction<[ComputerParams]>) => {
       state.computers = action.payload;
     },
-    setCurrentComponent: (state: userParams, action: PayloadAction) => {
-      state.currentComponent = action.payload;
+    setAllComponents: (state: userParams, action: PayloadAction<componentsParams>) => {
+      state.allComponents = action.payload;
     },
     setEditMode: (state: userParams, action: PayloadAction<boolean>) => {
       state.editMode = action.payload;
@@ -35,4 +44,4 @@ const computerSlice: Slice = createSlice({
 })
 
 export default computerSlice.reducer;
-export const { setComputers, setCurrentComponent, setEditMode } = computerSlice.actions;
+export const { setComputers, setAllComponents, setEditMode } = computerSlice.actions;

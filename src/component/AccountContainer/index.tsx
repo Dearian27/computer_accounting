@@ -3,7 +3,7 @@ import Account from "../Account";
 import './style.css';
 import axios from "../../utils/axios";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { setComputers } from "../../../redux/slices/computer";
+import { setAllComponents, setComputers } from "../../../redux/slices/computer";
 import { RootState } from "../../../redux/store";
 
 function AccountContainer(){
@@ -13,6 +13,8 @@ function AccountContainer(){
 	const getComputers = async() => {
 		const { data } = await axios.get('/computers/');
 		dispatch(setComputers(data.computers));
+		const { data:componentsData } = await axios.get('/components/');
+		dispatch(setAllComponents(componentsData.components));
 	}
 
 	useEffect(() => {
