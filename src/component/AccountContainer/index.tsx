@@ -19,7 +19,7 @@ function AccountContainer(){
 
 	useEffect(() => {
 		getComputers();
-	}, []);
+	}, [computers]);
 
 	return( 
 		<div className="AccountContainer">

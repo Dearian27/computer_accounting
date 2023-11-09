@@ -18,11 +18,13 @@ type componentsParams = Array<{
 }>;
 
 type userParams = {
+  active: string[],
   computers: [ComputerParams] | null,
   allComponents: componentsParams,
   editMode: boolean,
 }
 const initialState: userParams = {
+  active: [],
   computers: null,
   allComponents: [],
   editMode: false,
@@ -39,9 +41,16 @@ const computerSlice: Slice = createSlice({
     },
     setEditMode: (state: userParams, action: PayloadAction<boolean>) => {
       state.editMode = action.payload;
+    },
+    setActive: (state: userParams, action: PayloadAction<string> ) => {
+      if(state.active.includes(action.payload)) {
+        state.active = state.active.filter(element => element !== action.payload);
+      } else {
+        state.active.push(action.payload);
+      }
     }
   }
 })
 
 export default computerSlice.reducer;
-export const { setComputers, setAllComponents, setEditMode } = computerSlice.actions;
+export const { setComputers, setAllComponents, setEditMode, setActive } = computerSlice.actions;

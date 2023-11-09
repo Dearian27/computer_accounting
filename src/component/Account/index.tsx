@@ -3,6 +3,8 @@ import './style.css';
 import Info from './Info';
 import { FaLocationDot } from 'react-icons/fa6';
 import { BiSolidUser } from 'react-icons/bi';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { setActive } from '../../../redux/slices/computer';
 
 type AccountParams = {
 	id: string;
@@ -14,7 +16,13 @@ type AccountParams = {
 }
 
 const Account: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
-    const [expand, setExpand] = useState(false);	
+  const { active } = useAppSelector(state => state.computer);
+	console.log(active);
+	const dispatch = useAppDispatch();
+	
+	const expandHandler = () => {
+		dispatch(setActive(id));
+	}
 	
 		return (
         <section id={id} className="account">
@@ -39,10 +47,10 @@ const Account: React.FC<AccountParams> = ({ id, components, responsible, locatio
 							{/* <div className='computer_name'>Моноблок Apple iMac 24" М1 4.5К 7‑ядер GPU 256GB Green (MJV83UA/A)</div> */}
 						</div>
 
-						<button onClick={() => setExpand(!expand)}>Button</button>
+						<button onClick={() => expandHandler()}>Button</button>
 					</div>
-        {expand &&
-					<Info components={components} responsible={responsible} location={location} history={history} compName={compName} />
+        {active.includes(id) &&
+					<Info id={id} components={components} responsible={responsible} location={location} history={history} compName={compName} />
 				}
       </section>
         

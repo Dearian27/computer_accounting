@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './styles.css';
 import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
-import { setEditMode } from "../../../../redux/slices/computer";
+import computer, { setComputers, setEditMode } from "../../../../redux/slices/computer";
 import PartDetails from "../../PartDetails";
 import { BiSolidEditAlt } from "react-icons/bi";
 import { MdDeleteSweep } from "react-icons/md";
@@ -10,10 +10,12 @@ import { MdCreate } from "react-icons/md";
 import { MdSaveAs } from "react-icons/md";
 
 import { AiOutlineClose } from "react-icons/ai";
+import axios from "../../../utils/axios";
 
 type PartParams = unknown; 
 
 type AccountParams = {
+  id: string;
 	components: Array<[{type: string; name: string, id: [string]}]>;
 	responsible: string;
 	location: string;
@@ -21,14 +23,36 @@ type AccountParams = {
 	compName: string;
 }
 
-const Info: React.FC<AccountParams> = ({ components, responsible, location, history, compName}) => {
+const Info: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
   const dispatch = useAppDispatch();
-  const [currentPart, setCurrentPart] = useState<null | PartParams>(null);
-  const { allComponents, editMode } = useAppSelector(state => state.computer);
+  const [inputs, setInputs] = useState<{name: string; responsible: string; location: string}>({
+    name: compName, responsible, location
+  });
+  const { allComponents, editMode, computers } = useAppSelector(state => state.computer);
   const [textArea, setTextArea] = useState('');
   
+  const inputsChangeHandler = (event: InputEvent, type: string) => {
+    const newInputs = {...inputs};
+    newInputs[type] = event?.target?.value;
+    setInputs(newInputs)
+    // const newInputs = [...inputs];
+    // newInputs.
+  }
   const editClickHandler = () => {
     dispatch(setEditMode(!editMode))
+  }
+  const handleSubmit = async() => {
+    dispatch(setEditMode(false));
+    const { data } = await axios.post(`/computers/update/${id}`, {
+      name: inputs.name,
+      responsible: inputs.responsible,
+      location: inputs.location
+    })
+    console.log(data);
+    const index = computers.findIndex(comp => comp._id === id);
+    const newComputers = [...computers];
+    newComputers[index] = data.computer;
+    dispatch(setComputers(newComputers))
   }
   
   // const hoverHandler = () => {
@@ -47,15 +71,15 @@ const Info: React.FC<AccountParams> = ({ components, responsible, location, hist
       <div className='info_list'>
         <div className="info_line">
           <h3>Назва</h3>
-          <input className={`${editMode ? "active" : ""}`} value={compName} onChange={() => {}} readOnly={!editMode} />
+          <input className={`${editMode ? "active" : ""}`} value={inputs.name} onChange={(event) => inputsChangeHandler(event, 'name')} readOnly={!editMode} />
         </div>
         <div className="info_line">
           <h3>Локація</h3>
-          <input className={`${editMode ? "active" : ""}`} value={location} onChange={() => {}} readOnly={!editMode} />
+          <input className={`${editMode ? "active" : ""}`} value={inputs.location} onChange={(event) => inputsChangeHandler(event, 'location')} readOnly={!editMode} />
         </div>
         <div className="info_line">
           <h3>Відповідальний</h3>
-          <input className={`${editMode ? "active" : ""}`} value={responsible} onChange={() => {}} readOnly={!editMode} />
+          <input className={`${editMode ? "active" : ""}`} value={inputs.responsible} onChange={(event) => inputsChangeHandler(event, 'responsible')} readOnly={!editMode} />
         </div>
       { components &&
         components.map((componentsOneType, index) => {
@@ -75,7 +99,7 @@ const Info: React.FC<AccountParams> = ({ components, responsible, location, hist
             <button className={`${editMode ? "active" : ""}`}>
             {editMode ? 
               <>
-                <MdSaveAs  className="btnIcon" color="#50577A"  />
+                <MdSaveAs onClick={handleSubmit}  className="btnIcon" color="#50577A"  />
               </>
               :
               <>
