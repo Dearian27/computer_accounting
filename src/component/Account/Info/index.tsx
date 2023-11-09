@@ -17,7 +17,7 @@ type AccountParams = {
 	components: Array<[{type: string; name: string, id: [string]}]>;
 	responsible: string;
 	location: string;
-	history: string;
+	history: History;
 	compName: string;
 }
 
@@ -100,7 +100,7 @@ const Info: React.FC<AccountParams> = ({ components, responsible, location, hist
         </div>
       </div>
     </main>
-    <PartDetails />
+    <PartDetails history={history} />
     </section>
   )
 }

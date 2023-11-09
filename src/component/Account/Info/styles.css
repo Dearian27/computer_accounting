@@ -45,6 +45,8 @@
   align-items: center;
 }
 .notes {
+  width: 800px;
+  min-height: 120px;
   height: auto;
   border-radius: 10px;
   background-color: #404258;
@@ -89,49 +91,7 @@
   color: #50577A;
   border: 2px solid aliceblue;
 }
-.partDetails {
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-::-webkit-scrollbar {
-  background-color: #323445;
-  border-radius: 5px;
-  width: 14px;
-}
-::-webkit-scrollbar-thumb {
-  border: 2px solid #ffffff00;
-  border-color: #ffffff00;
-  background-color: #393A4E;
-  border-radius: 5px;
-  transition: 0.4s ease-in-out;
-}
-::-webkit-scrollbar-thumb:hover {
-  border-color: rgba(255, 255, 255, 0.498);
-}
-.history {
-  background-color: #404258;
-  border-radius: 10px;
-  height: 300px;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-}
-.history .item {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  padding: 5px;
 
-  background-color: #474E68;
-  width: 100%;
-  min-height: 60px;
-  transition: 0.3s ease-in-out;
-}
-.item:hover {
-  background-color: #5d6585;
-}
 .info_list .info_line{
   align-items: center;
   display: flex;

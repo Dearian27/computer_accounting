@@ -15,21 +15,21 @@ type AccountParams = {
 
 const Account: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
     const [expand, setExpand] = useState(false);	
-
+	
 		return (
         <section id={id} className="account">
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 						<div className='computer'>
 							<div style={{display: 'flex', gap: 20}}>
-								<div className='field'>#40044004</div>
+								{/* <div className='field'>#40044004</div> */}
 								<div className='field'>
-									{responsible}
+									{responsible || 'Немає'}
 									{/* Юрій Дзюбак */}
 									<BiSolidUser className='icon' />
 									{/* <img className='icon' src={UserImg} alt="person" /> */}
 								</div>
 								<div className='field'>
-									{location}
+									{location || 'Немає'}
 									{/* Обчислювальний центр */}
 									<FaLocationDot className='icon' />
 									{/* <img className='icon' src={PinImg} alt="person" /> */}

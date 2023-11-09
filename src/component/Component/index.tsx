@@ -1,5 +1,6 @@
 import { useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
+import { parser } from '../../componentParser';
 import './styles.css';
 import { BiLinkExternal } from 'react-icons/bi';
 
@@ -9,14 +10,13 @@ export default function Component({name, type}) {
 
   return (
     <div className='info_line'>
-      <h3>{type}</h3>
+      <h3>{parser[type]}</h3>
       <button>
         {name}
         <div className={`modal_btn ${editMode ? 'animate' : 'none'}`}>
           <BiLinkExternal />
         </div>
       </button>
-
     </div>
   )
 }
