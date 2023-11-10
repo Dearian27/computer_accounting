@@ -1,0 +1,49 @@
+.account{
+  font-family: 'Fixel';
+  color: white;
+  overflow: hidden;
+  background-color: #50577A;
+  border-radius: 10px;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.field {
+  display: flex;
+  color: #8892b6;
+  align-items: center;
+  gap: 3px;
+}
+.icon {
+  height: 16px;
+}
+.component .name{
+  display: flex;
+  font-family: Fixel-Bold;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px 0 5px 0;
+}
+
+.account button{
+  background-color: #50577A;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.grey {
+  font-size: 16px;
+  color: #9897ab;
+}
+.link {
+  color: white;
+  transition: 0.5s;
+  font-weight: 900;
+  font-size: 20px;
+}
+.link:hover {
+  color: lawngreen;
+}

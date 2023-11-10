@@ -90,7 +90,7 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
               </>
               :
               <>
-                <MdSaveAs  className="btnIcon" color="aliceblue"  />
+                <MdSaveAs  className="btnIcon" color="#6d759b"  />
               </>
               }
             </button>
