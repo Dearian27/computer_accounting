@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import './styles.css';
 import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
@@ -24,6 +24,8 @@ type AccountParams = {
 }
 
 const Info: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
+
+  console.log('f')
   const dispatch = useAppDispatch();
   const [inputs, setInputs] = useState<{name: string; responsible: string; location: string}>({
     name: compName, responsible, location
@@ -31,12 +33,11 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
   const { allComponents, editMode, computers } = useAppSelector(state => state.computer);
   const [textArea, setTextArea] = useState('');
   
-  const inputsChangeHandler = (event: InputEvent, type: string) => {
-    const newInputs = {...inputs};
-    newInputs[type] = event?.target?.value;
-    setInputs(newInputs)
-    // const newInputs = [...inputs];
-    // newInputs.
+  const inputsChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [event.target.name]: event.target.value
+    }))
   }
   const editClickHandler = () => {
     dispatch(setEditMode(!editMode))
@@ -48,22 +49,11 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
       responsible: inputs.responsible,
       location: inputs.location
     })
-    console.log(data);
     const index = computers.findIndex(comp => comp._id === id);
     const newComputers = [...computers];
     newComputers[index] = data.computer;
     dispatch(setComputers(newComputers))
   }
-  
-  // const hoverHandler = () => {
-    
-  // }
-  
-  useEffect(() => {
-    if(localStorage.getItem('textarea')) {
-      setTextArea(window.localStorage.getItem('textarea') || '');
-    }
-  }, [])
 
   return (
     <section className="infoContainer">
@@ -71,15 +61,15 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
       <div className='info_list'>
         <div className="info_line">
           <h3>Назва</h3>
-          <input className={`${editMode ? "active" : ""}`} value={inputs.name} onChange={(event) => inputsChangeHandler(event, 'name')} readOnly={!editMode} />
+          <input className={`${editMode ? "active" : ""}`} name="name" value={inputs.name} onChange={(event) => inputsChangeHandler(event)} readOnly={!editMode} />
         </div>
         <div className="info_line">
           <h3>Локація</h3>
-          <input className={`${editMode ? "active" : ""}`} value={inputs.location} onChange={(event) => inputsChangeHandler(event, 'location')} readOnly={!editMode} />
+          <input className={`${editMode ? "active" : ""}`} name="location" value={inputs.location} onChange={(event) => inputsChangeHandler(event)} readOnly={!editMode} />
         </div>
         <div className="info_line">
           <h3>Відповідальний</h3>
-          <input className={`${editMode ? "active" : ""}`} value={inputs.responsible} onChange={(event) => inputsChangeHandler(event, 'responsible')} readOnly={!editMode} />
+          <input className={`${editMode ? "active" : ""}`} name="responsible" value={inputs.responsible} onChange={(event) => inputsChangeHandler(event)} readOnly={!editMode} />
         </div>
       { components &&
         components.map((componentsOneType, index) => {

@@ -19,12 +19,12 @@ function AccountContainer(){
 
 	useEffect(() => {
 		getComputers();
-	}, [computers]);
-
+	}, []);
+	console.log(computers);
 	return( 
 		<div className="AccountContainer">
-			{ computers &&
-				computers.map((computer) => {
+			{
+				computers?.map((computer) => {
 					return <Account id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
 				})
 			}

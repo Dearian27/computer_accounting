@@ -17,9 +17,8 @@ type AccountParams = {
 
 const Account: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
   const { active } = useAppSelector(state => state.computer);
-	console.log(active);
+
 	const dispatch = useAppDispatch();
-	
 	const expandHandler = () => {
 		dispatch(setActive(id));
 	}
@@ -49,7 +48,7 @@ const Account: React.FC<AccountParams> = ({ id, components, responsible, locatio
 
 						<button onClick={() => expandHandler()}>Button</button>
 					</div>
-        {active.includes(id) &&
+        {active.find(pid => pid === id) &&
 					<Info id={id} components={components} responsible={responsible} location={location} history={history} compName={compName} />
 				}
       </section>
