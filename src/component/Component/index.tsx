@@ -4,7 +4,12 @@ import { parser } from '../../componentParser';
 import './styles.css';
 import { BiLinkExternal } from 'react-icons/bi';
 
-export default function Component({name, type}) {
+type ComponentParams = {
+  name: string,
+  type: string
+}
+
+const Component: React.FC<ComponentParams> = ({name, type}) => {
 
   const {  editMode } = useAppSelector((state: RootState) => state.computer);
 
@@ -20,3 +25,5 @@ export default function Component({name, type}) {
     </div>
   )
 }
+
+export default Component;

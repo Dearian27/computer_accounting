@@ -1,19 +1,15 @@
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { RootState } from "../../../redux/store";
 import './styles.css';
 import { parser } from "../../componentParser";
-import { useEffect, useState } from "react";
 
-export type History = Array<{_id: number, name: string, oldId: number, oldName: string, date: Date, componentType: string}>;
+export type historyParams = Array<{_id: number, name: string, oldId: number, oldName: string, date: Date, componentType: string}>;
 
-type HistoryParams = {
-  history: History
+type HistoriesParams = {
+  history: historyParams
 }
 
-const PartDetails: React.FC<HistoryParams> = ({history}) => {
-  const dispatch = useAppDispatch();
-  // const {  } = useAppSelector((state: RootState) => state.computer);
+const PartDetails: React.FC<HistoriesParams> = ({history}) => {
+  
   return (
     <aside className="history">
       { history ?
@@ -31,11 +27,11 @@ const PartDetails: React.FC<HistoryParams> = ({history}) => {
                 </div>
                 {item.oldName && item.oldId ?
                   <div className="content">
-                    Компонент <a href={`/${item.oldId}`}>{item.oldName}</a> замінено на <a href={`/${item._id}`}>{item.name}</a>
+                    Компонент <Link to={`/${item.oldId}`}>{item.oldName}</Link> замінено на <Link to={`/${item._id}`}>{item.name}</Link>
                   </div>
                   :
                     <div className="content">
-                      Початок експлуатації <a href={`/${item._id}`}>{item.name}</a>
+                      Початок експлуатації <Link to={`/${item._id}`}>{item.name}</Link>
                     </div>  
                   }
                 </div>

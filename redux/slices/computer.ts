@@ -1,13 +1,15 @@
 import { PayloadAction, Slice, createSlice } from "@reduxjs/toolkit";
+import { historyParams } from "../../src/component/PartDetails";
 
-type ComputerParams = {
+export type ComputerParams = {
+  _id: string,
   name: string,
-  components: Array<{id: string, type: string}>,
-  history: Array<{id: string, type: string, endData: string}>,
+  components: Array<{id: [string], type: string, name: string}>,
+  history: historyParams,
   location: string,
   responsible: string,
 }
-type componentsParams = Array<{
+export type componentParams = {
   anchor: string,
   _id: string,
   createdAt: string,
@@ -15,12 +17,12 @@ type componentsParams = Array<{
   name: string,
   type: string,
   __v: number
-}>;
+};
 
 type userParams = {
   active: string[],
   computers: [ComputerParams] | null,
-  allComponents: componentsParams,
+  allComponents: Array<componentParams>,
   editMode: boolean,
 }
 const initialState: userParams = {
@@ -36,7 +38,7 @@ const computerSlice: Slice = createSlice({
     setComputers: (state: userParams, action: PayloadAction<[ComputerParams]>) => {
       state.computers = action.payload;
     },
-    setAllComponents: (state: userParams, action: PayloadAction<componentsParams>) => {
+    setAllComponents: (state: userParams, action: PayloadAction<Array<componentParams>>) => {
       state.allComponents = action.payload;
     },
     setEditMode: (state: userParams, action: PayloadAction<boolean>) => {

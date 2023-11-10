@@ -1,17 +1,17 @@
-import { useState } from 'react';
 import './style.css';
 import Info from './Info';
 import { FaLocationDot } from 'react-icons/fa6';
 import { BiSolidUser } from 'react-icons/bi';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setActive } from '../../../redux/slices/computer';
+import { historyParams } from '../PartDetails';
 
 type AccountParams = {
 	id: string;
-	components: Array<[{type: string; name: string}]>;
+	components: Array<{type: string; name: string, id: [string]}>;
 	responsible: string;
 	location: string;
-	history: string;
+	history: historyParams;
 	compName: string;
 }
 
@@ -28,27 +28,21 @@ const Account: React.FC<AccountParams> = ({ id, components, responsible, locatio
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 						<div className='computer'>
 							<div style={{display: 'flex', gap: 20}}>
-								{/* <div className='field'>#40044004</div> */}
 								<div className='field'>
 									{responsible || 'Немає'}
-									{/* Юрій Дзюбак */}
 									<BiSolidUser className='icon' />
-									{/* <img className='icon' src={UserImg} alt="person" /> */}
 								</div>
 								<div className='field'>
 									{location || 'Немає'}
-									{/* Обчислювальний центр */}
 									<FaLocationDot className='icon' />
-									{/* <img className='icon' src={PinImg} alt="person" /> */}
 								</div>
 							</div>
 							<div className='computer_name'>{compName}</div>
-							{/* <div className='computer_name'>Моноблок Apple iMac 24" М1 4.5К 7‑ядер GPU 256GB Green (MJV83UA/A)</div> */}
 						</div>
 
 						<button onClick={() => expandHandler()}>Button</button>
 					</div>
-        {active.find(pid => pid === id) &&
+        {active.includes(id) &&
 					<Info id={id} components={components} responsible={responsible} location={location} history={history} compName={compName} />
 				}
       </section>

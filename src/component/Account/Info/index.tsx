@@ -2,9 +2,9 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import './styles.css';
 import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
-import computer, { setComputers, setEditMode } from "../../../../redux/slices/computer";
+import { ComputerParams, componentParams, setComputers, setEditMode } from "../../../../redux/slices/computer";
 import PartDetails from "../../PartDetails";
-import { BiSolidEditAlt } from "react-icons/bi";
+// import { BiSolidEditAlt } from "react-icons/bi";
 import { MdDeleteSweep } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
 import { MdSaveAs } from "react-icons/md";
@@ -12,11 +12,10 @@ import { MdSaveAs } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 import axios from "../../../utils/axios";
 
-type PartParams = unknown; 
 
 type AccountParams = {
   id: string;
-	components: Array<[{type: string; name: string, id: [string]}]>;
+	components: Array<{type: string; name: string, id: [string]}>;
 	responsible: string;
 	location: string;
 	history: History;
@@ -24,8 +23,6 @@ type AccountParams = {
 }
 
 const Info: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
-
-  console.log('f')
   const dispatch = useAppDispatch();
   const [inputs, setInputs] = useState<{name: string; responsible: string; location: string}>({
     name: compName, responsible, location
@@ -49,7 +46,7 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
       responsible: inputs.responsible,
       location: inputs.location
     })
-    const index = computers.findIndex(comp => comp._id === id);
+    const index = computers.findIndex((comp: ComputerParams) => comp._id === id);
     const newComputers = [...computers];
     newComputers[index] = data.computer;
     dispatch(setComputers(newComputers))
@@ -72,10 +69,10 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
           <input className={`${editMode ? "active" : ""}`} name="responsible" value={inputs.responsible} onChange={(event) => inputsChangeHandler(event)} readOnly={!editMode} />
         </div>
       { components &&
-        components.map((componentsOneType, index) => {
+        components.map((componentsOneType, index: number) => {
           if(componentsOneType?.id && componentsOneType?.id.length > 0) {
             return componentsOneType.id.map(c => {
-              return <Component key={c} name={allComponents.find(comp => comp._id === c).name} type={componentsOneType.type} />
+              return <Component key={c} name={allComponents.find((comp: componentParams) => comp._id === c).name} type={componentsOneType.type} />
             })
           } else {
             return <Component key={index} name={""} type={componentsOneType.type} />
