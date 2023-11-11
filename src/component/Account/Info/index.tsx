@@ -1,24 +1,24 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import './styles.css';
 import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
-import { ComputerParams, componentParams, setComputers, setEditMode } from "../../../../redux/slices/computer";
-import PartDetails from "../../PartDetails";
-// import { BiSolidEditAlt } from "react-icons/bi";
+import { ComputerParams, setComputers, setEditMode } from "../../../../redux/slices/computer";
+import PartDetails, { historyParams } from "../../PartDetails";
 import { MdDeleteSweep } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
 import { MdSaveAs } from "react-icons/md";
 
 import { AiOutlineClose } from "react-icons/ai";
 import axios from "../../../utils/axios";
+import { componentTypeVariants } from "../../ComponentAccount";
 
 
 type AccountParams = {
   id: string;
-	components: Array<{type: string; name: string, id: [string]}>;
+	components: Array<{type: componentTypeVariants; name: string, id: [string]}>;
 	responsible: string;
 	location: string;
-	history: History;
+	history: historyParams;
 	compName: string;
 }
 

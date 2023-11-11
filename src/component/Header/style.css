@@ -54,3 +54,7 @@
 	border-radius: 10px;
 	border: none;
 }
+
+.tabBtn.active {
+	background-color: whitesmoke;
+}

@@ -5,7 +5,7 @@ import axios from "../../utils/axios";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { ComputerParams, componentParams, setAllComponents, setComputers } from "../../../redux/slices/computer";
 import { RootState } from "../../../redux/store";
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Computer from "../Computer";
 import ComponentAccount from "../ComponentAccount";
 
@@ -15,7 +15,6 @@ type getComputersResponse = {
 }
 
 function AccountContainer(){
-	const params = useParams();
 	const dispatch = useAppDispatch();
 	const { computers, allComponents } = useAppSelector((state: RootState) => state.computer)
 	const [error, setError] = useState('');

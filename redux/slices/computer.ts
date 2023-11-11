@@ -1,10 +1,11 @@
 import { PayloadAction, Slice, createSlice } from "@reduxjs/toolkit";
 import { historyParams } from "../../src/component/PartDetails";
+import { componentTypeVariants } from "../../src/component/ComponentAccount";
 
 export type ComputerParams = {
   _id: string,
   name: string,
-  components: Array<{id: [string], type: string, name: string}>,
+  components: Array<{id: [string], type: componentTypeVariants, name: string}>,
   history: historyParams,
   location: string,
   responsible: string,
@@ -15,7 +16,7 @@ export type componentParams = {
   createdAt: string,
   updatedAt: string,
   name: string,
-  type: string,
+  type: componentTypeVariants,
   __v: number
 };
 

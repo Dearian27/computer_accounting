@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import './styles.css';
 import { parser } from "../../componentParser";
+import { componentTypeVariants } from "../ComponentAccount";
 
-export type historyParams = Array<{_id: number, name: string, oldId: number, oldName: string, date: Date, componentType: string}>;
+export type historyParams = Array<{_id: number, name: string, oldId: number, oldName: string, date: Date, componentType: componentTypeVariants}>;
 
 type HistoriesParams = {
   history: historyParams

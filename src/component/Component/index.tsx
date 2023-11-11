@@ -1,12 +1,13 @@
 import { useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
 import { parser } from '../../componentParser';
+import { componentTypeVariants } from '../ComponentAccount';
 import './styles.css';
 import { BiLinkExternal } from 'react-icons/bi';
 
 type ComponentParams = {
   name: string,
-  type: string
+  type: componentTypeVariants
 }
 
 const Component: React.FC<ComponentParams> = ({name, type}) => {

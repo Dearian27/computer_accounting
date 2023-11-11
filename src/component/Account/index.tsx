@@ -5,10 +5,11 @@ import { BiSolidUser } from 'react-icons/bi';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setActive } from '../../../redux/slices/computer';
 import { historyParams } from '../PartDetails';
+import { componentTypeVariants } from '../ComponentAccount';
 
 type AccountParams = {
 	id: string;
-	components: Array<{type: string; name: string, id: [string]}>;
+	components: Array<{type: componentTypeVariants; name: string, id: [string]}>;
 	responsible: string;
 	location: string;
 	history: historyParams;
