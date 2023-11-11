@@ -4,13 +4,33 @@ import { MdAddCircle } from "react-icons/md";
 import { IoHardwareChip } from "react-icons/io5"; 
 import { HiMiniComputerDesktop } from "react-icons/hi2";
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useAppDispatch } from '../../../redux/hooks';
+import { setSearchText } from '../../../redux/slices/computer';
 
 function Header() {
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
-	
-	console.log(location);
+	const [search, setSearch] = useState<string>("");
+
+	const debouncedHandleSearch = () => {
+		console.log(search);
+		dispatch(setSearchText(search));
+		if(location.pathname.startsWith('/components/')) {
+			navigate('/components/');
+		} else {
+			navigate('/');
+		}
+	}
+
+	useEffect(() => {
+			const timeoutId = setTimeout(() => {
+				debouncedHandleSearch();
+			}, 1200);
+    return () => clearTimeout(timeoutId);
+  }, [search]);
+
 	return (
 		<div className="header">
 			<div className='change_buttons'>
@@ -38,7 +58,7 @@ function Header() {
 				</button>
 			</div>
 			<div className='search_line'>
-				<input type="text" />
+				<input type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
 				<MdSearch className="btnIcon" />
 			</div>
 			<button className='add_button'>

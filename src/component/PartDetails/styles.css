@@ -10,6 +10,7 @@
   background-color: #323445;
   border-radius: 5px;
   width: 14px;
+  z-index: 5;
 }
 ::-webkit-scrollbar-thumb {
   border: 2px solid #ffffff00;

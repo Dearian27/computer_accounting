@@ -15,8 +15,9 @@ type getComputersResponse = {
 }
 
 function AccountContainer(){
+	
 	const dispatch = useAppDispatch();
-	const { computers, allComponents } = useAppSelector((state: RootState) => state.computer)
+	const { computers, allComponents, searchText } = useAppSelector((state: RootState) => state.computer)
 	const [error, setError] = useState('');
 
 	const getComputers = async() => {
@@ -36,17 +37,38 @@ function AccountContainer(){
 		getComputers();
 	}, []);
 
+	function searchMatchesByComputer(computer: ComputerParams, query: string): boolean {
+		if(computer.name.toLowerCase().includes(query.toLowerCase())) {
+			return true;
+		}
+		if(computer.location.toLowerCase().includes(query.toLowerCase())) { 
+			return true;
+		}
+		if(computer.responsible.toLowerCase().includes(query.toLowerCase())) {
+			return true;
+		}
+		computer.components.map((component) => component.name?.toLowerCase().includes(query.toLowerCase()) && true);
+		return false;
+	}
+
+	function searchMatchesByComponent(component: componentParams, query: string): boolean {
+		if(component.name.toLowerCase().includes(query.toLowerCase())) {
+			return true;
+		}
+		return false;
+	}
+
 	return !error ? ( 
 		<div className="AccountContainer">
 			<Routes>
         <Route path='/' element={
-						computers?.map((computer: ComputerParams) => {
+						computers?.filter((computer: ComputerParams) => !searchText ? true : searchMatchesByComputer(computer, searchText)).map((computer: ComputerParams) => {
 							return <Account id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
 						})
 				} />
 				<Route path='/:id' element={<Computer computers={computers} />} />
 				<Route path='/components/' element={
-					allComponents?.map((component: componentParams) => {
+					allComponents?.filter((component: componentParams) => !searchText ? true : searchMatchesByComponent(component, searchText)).map((component: componentParams) => {
 						return <ComponentAccount key={component._id} id={component._id} />
 					})
 				} />

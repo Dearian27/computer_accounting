@@ -25,12 +25,14 @@ type userParams = {
   computers: [ComputerParams] | null,
   allComponents: Array<componentParams>,
   editMode: boolean,
+  searchText: string
 }
 const initialState: userParams = {
   active: [],
   computers: null,
   allComponents: [],
   editMode: false,
+  searchText: "",
 }
 const computerSlice: Slice = createSlice({
   initialState,
@@ -51,9 +53,12 @@ const computerSlice: Slice = createSlice({
       } else {
         state.active.push(action.payload);
       }
+    },
+    setSearchText: (state: userParams, action: PayloadAction<string> ) => {
+      state.searchText = action.payload;
     }
   }
 })
 
 export default computerSlice.reducer;
-export const { setComputers, setAllComponents, setEditMode, setActive } = computerSlice.actions;
+export const { setComputers, setAllComponents, setEditMode, setActive, setSearchText } = computerSlice.actions;

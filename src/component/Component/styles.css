@@ -7,7 +7,6 @@
   margin-top: 20px;
   width: 40%;
   border-radius: 10px;
-
   padding: 5px;
   gap: 5px;
 }
@@ -24,12 +23,11 @@
   padding: 0;
   background-color: #404258;
   font-weight: 500;
-
   padding: 5px;
   border-radius: 5px;
 }
 
-.info_list button {
+.info_list .btn {
   cursor: pointer;
   margin: 0;
   font-family: 'Fixel';
@@ -41,8 +39,6 @@
   color: white;
   font-size: 16px;
   background-color: #404258;
-
-  /* padding: 0px; */
   padding: 0 10px;
   border-radius: 5px;
 }

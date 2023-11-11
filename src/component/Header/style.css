@@ -1,9 +1,14 @@
 .header{
+	position: fixed;
+	box-sizing: border-box;
+	width: 100%;
+	z-index: 10;
+	height: 60px;
 	padding: 0px 20px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	
+	background-color: #404258;
 }
 
 .change_buttons{
@@ -12,17 +17,19 @@
 	justify-content: space-between;
 	background-color: #50577A;
 	border-radius: 10px;
-	height: 30px;
-	
+	height: 40px;
 }
 
 .change_buttons button{
-	padding: 0px 10px;
+	padding: 20px;
 	background-color: #50577A;
 	color: white;
-	height: 30px;
 	border-radius: 10px;
 	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s;
 }
 
 .search_line{
@@ -44,8 +51,11 @@
 	height: 30px;
 	border-radius: 10px;
 	color: white;
+	font-size: 20px;
 }
-
+.btn_wrapper {
+	background-color: #50577A;
+}
 .header .add_button{
 	background-color: #50577A;
 	color: white;
