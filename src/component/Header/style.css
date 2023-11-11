@@ -1,65 +1,56 @@
-
-
 .header{
-    padding: 0px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
+	padding: 0px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
 }
 
 .change_buttons{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    background-color: #50577A;
-    border-radius: 10px;
-    height: 30px;
-   
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	background-color: #50577A;
+	border-radius: 10px;
+	height: 30px;
+	
 }
-
-
 
 .change_buttons button{
-    padding: 0px 10px;
-    background-color: #50577A;
-    color: white;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
+	padding: 0px 10px;
+	background-color: #50577A;
+	color: white;
+	height: 30px;
+	border-radius: 10px;
+	border: none;
 }
-
 
 .search_line{
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 20px;
-    width: 100%;
-    background-color: #50577A;
-    height: 30px;
-    border-radius: 10px;
-}
-.header input {
-   
-    width: 100%;
-    background-color: #50577A;
-    border: none;
-    outline: none;
-    height: 30px;
-    border-radius: 10px;
-    color: white;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 10px;
+	width: 500px;
+	background-color: #50577A;
+	border-radius: 10px;
 }
 
+.header input {
+	width: 100%;
+	background-color: #50577A;
+	border: none;
+	outline: none;
+	height: 30px;
+	border-radius: 10px;
+	color: white;
+}
 
 .header .add_button{
-    background-color: #50577A;
-    color: white;
-    padding: 0px 50px;
-    height: 30px;
-    border-radius: 10px;
-    border: none;
+	background-color: #50577A;
+	color: white;
+	padding: 0px 50px;
+	height: 30px;
+	border-radius: 10px;
+	border: none;
 }
-
-

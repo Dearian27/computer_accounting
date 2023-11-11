@@ -45,7 +45,7 @@ function AccountContainer(){
 							return <Account id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
 						})
 				} />
-				<Route path='/computers/:id' element={<Computer computers={computers} />} />
+				<Route path='/:id' element={<Computer computers={computers} />} />
 				<Route path='/components/' element={
 					allComponents?.map((component: componentParams) => {
 						return <ComponentAccount key={component._id} id={component._id} />

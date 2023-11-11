@@ -27,7 +27,7 @@
   padding: 5px 0 5px 0;
 }
 
-.account button{
+.account .deleteBtn{
   background-color: #50577A;
   color: white;
   border-radius: 10px;

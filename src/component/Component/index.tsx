@@ -16,7 +16,7 @@ const Component: React.FC<ComponentParams> = ({name, type}) => {
   return (
     <div className='info_line'>
       <h3>{parser[type]}</h3>
-      <button>
+      <button className="btn">
         {name}
         <div className={`modal_btn ${editMode ? 'animate' : 'none'}`}>
           <BiLinkExternal />

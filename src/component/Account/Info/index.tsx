@@ -68,11 +68,11 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
           <h3>Відповідальний</h3>
           <input className={`${editMode ? "active" : ""}`} name="responsible" value={inputs.responsible} onChange={(event) => inputsChangeHandler(event)} readOnly={!editMode} />
         </div>
-      { components &&
+      { components && allComponents &&
         components.map((componentsOneType, index: number) => {
           if(componentsOneType?.id && componentsOneType?.id.length > 0) {
             return componentsOneType.id.map(c => {
-              return <Component key={c} name={allComponents.find((comp: componentParams) => comp._id === c).name} type={componentsOneType.type} />
+              return <Component key={c} name={componentsOneType.name} type={componentsOneType.type} />
             })
           } else {
             return <Component key={index} name={""} type={componentsOneType.type} />

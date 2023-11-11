@@ -27,7 +27,7 @@ const PartDetails: React.FC<HistoriesParams> = ({history}) => {
                 </div>
                 {item.oldName && item.oldId ?
                   <div className="content">
-                    Компонент <Link to={`/components/${item.oldId}`}>{item.oldName}</Link> замінено на <Link to={`/${item._id}`}>{item.name}</Link>
+                    Компонент <Link to={`/components/${item.oldId}`}>{item.oldName}</Link> замінено на <Link to={`/components/${item._id}`}>{item.name}</Link>
                   </div>
                   :
                     <div className="content">

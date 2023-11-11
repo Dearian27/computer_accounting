@@ -68,7 +68,7 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id }) => {
               <span className='grey'>Неприкріплена</span>
             }</div>
           </div>
-          <button onClick={() => deleteHandler()}>
+          <button className='deleteBtn' onClick={() => deleteHandler()}>
             <MdDeleteSweep className="btnIcon" color="aliceblue"/>
           </button>
         </div>
