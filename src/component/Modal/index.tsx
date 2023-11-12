@@ -43,7 +43,7 @@ const Modal: React.FC = () => {
         <div className='container'>
           { filteredComponents?.filter((component: componentParams) => component.type === modal.type && component.anchor !== modal.computerId).length > 0 ?
               filteredComponents?.filter((component: componentParams) => component.type === modal.type && component.anchor !== modal.computerId).map((component: componentParams) => {
-                return <ComponentAccount key={component._id} id={component._id} />
+                return <ComponentAccount key={component._id} id={component._id} choosing={true} />
               })
             : <span className='not_found'>Нічого не знайдено</span>
           }

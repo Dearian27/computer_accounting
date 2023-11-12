@@ -72,7 +72,7 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
         components.map((componentsOneType, index: number) => {
           if(componentsOneType?.id && componentsOneType?.id.length > 0) {
             return componentsOneType.id.map(c => {
-              return <Component key={c} name={allComponents.find((component: componentParams) => component._id === c).name} type={componentsOneType.type} id={c} computerId={id} withPlus={c === componentsOneType.id[componentsOneType.id.length-1] && (componentsOneType.type === 'ram' || componentsOneType.type === 'disk') ? true : false} />
+              return <Component key={c} name={allComponents.find((component: componentParams) => component._id === c)?.name} type={componentsOneType.type} id={c} computerId={id} withPlus={c === componentsOneType.id[componentsOneType.id.length-1] && (componentsOneType.type === 'ram' || componentsOneType.type === 'disk') ? true : false} />
             })
           } else {
             return <Component key={index} name={allComponents.find((component: componentParams) => component._id === componentsOneType.id[0])?.name} type={componentsOneType.type} id={componentsOneType.id[0]} computerId={id} />

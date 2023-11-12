@@ -22,6 +22,19 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
   const currentId = id === 'unique' ? params.id : id;
   const component:componentParams = allComponents.find((component: componentParams) => component._id === currentId);
   const [ computerName, setComputerName ] = useState<string>("");
+
+  const getComputers = async() => {
+		try {
+			const res = await axios.get('/computers/');
+			dispatch(setComputers(res.data.computers));
+			
+			const res2 = await axios.get('/components/');
+			dispatch(setAllComponents(res2.data.components));
+		} catch(err) {
+			console.error(err);
+		}
+	}
+
   const addComponent = async () => {
     const res = await axios.post(`/components/${modal.computerId}`, {
       type: modal.type,
@@ -29,10 +42,11 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
       id,
     });
     if(res.status === 200) {
-      const index = computers.findIndex((comp: ComputerParams) => comp._id === modal.computerId);
-      const newComputers = [...computers];
-      newComputers[index] = res.data.computer;
-      dispatch(setComputers(newComputers));
+      getComputers();
+      // const index = computers.findIndex((comp: ComputerParams) => comp._id === modal.computerId);
+      // const newComputers = [...computers];
+      // newComputers[index] = res.data.computer;
+      // dispatch(setComputers(newComputers));
     }
     if(res.status === 404) {
       console.log('not found');
@@ -89,7 +103,7 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
           }</div>
         </div>
 
-        {choosing ?  
+        {!choosing ?  
           <button className='optionBtn' onClick={() => deleteHandler()}>
             <MdDeleteSweep className="btnIcon" color="aliceblue"/>
           </button>
