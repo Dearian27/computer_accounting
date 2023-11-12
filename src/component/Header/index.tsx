@@ -15,7 +15,6 @@ function Header() {
 	const [search, setSearch] = useState<string>("");
 
 	const debouncedHandleSearch = () => {
-		console.log(search);
 		dispatch(setSearchText(search));
 		if(location.pathname.startsWith('/components/')) {
 			navigate('/components/');
@@ -34,25 +33,25 @@ function Header() {
 	return (
 		<div className="header">
 			<div className='change_buttons'>
-				<button className={`tabBtn ${!location.pathname.startsWith('/components/') ? 'active' : ''}`}>
+				<button onClick={() => navigate('/')} className={`tabBtn ${!location.pathname.startsWith('/components/') ? 'active' : ''}`}>
 					{ !location.pathname.startsWith('/components/') ?
 						<>
 							<HiMiniComputerDesktop className="btnIcon" color="#6d759b" />
 						</>
 						:
 						<>
-							<HiMiniComputerDesktop onClick={() => navigate('/')} className="btnIcon" />
+							<HiMiniComputerDesktop className="btnIcon" />
 						</>
 					}
 				</button>
-				<button className={`tabBtn ${location.pathname.startsWith('/components/') ? 'active' : ''}`}>
+				<button onClick={() => navigate('/components/')} className={`tabBtn ${location.pathname.startsWith('/components/') ? 'active' : ''}`}>
 					{ location.pathname.startsWith('/components/') ?
 						<>
 							<IoHardwareChip  className="btnIcon" color="#6d759b"  />
 						</>
 						:
 						<>
-							<IoHardwareChip onClick={() => navigate('/components/')}  className="btnIcon"  />
+							<IoHardwareChip className="btnIcon"  />
 						</>
 					}
 				</button>

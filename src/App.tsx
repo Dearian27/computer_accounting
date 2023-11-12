@@ -4,6 +4,7 @@ import './App.css'
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import { IconContext } from "react-icons";
+import Modal from './component/Modal';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Header />
           <AccountContainer />
         </main>
+        <Modal />
       </IconContext.Provider>
     </Provider>
   )

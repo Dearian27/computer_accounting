@@ -8,6 +8,7 @@ import { RootState } from "../../../redux/store";
 import { Route, Routes } from "react-router-dom";
 import Computer from "../Computer";
 import ComponentAccount from "../ComponentAccount";
+import { searchMatchesByComponent, searchMatchesByComputer } from "../../utils/search";
 
 type getComputersResponse = {
 	computers: Array<ComputerParams>,
@@ -15,7 +16,6 @@ type getComputersResponse = {
 }
 
 function AccountContainer(){
-	
 	const dispatch = useAppDispatch();
 	const { computers, allComponents, searchText } = useAppSelector((state: RootState) => state.computer)
 	const [error, setError] = useState('');
@@ -37,26 +37,7 @@ function AccountContainer(){
 		getComputers();
 	}, []);
 
-	function searchMatchesByComputer(computer: ComputerParams, query: string): boolean {
-		if(computer.name.toLowerCase().includes(query.toLowerCase())) {
-			return true;
-		}
-		if(computer.location.toLowerCase().includes(query.toLowerCase())) { 
-			return true;
-		}
-		if(computer.responsible.toLowerCase().includes(query.toLowerCase())) {
-			return true;
-		}
-		computer.components.map((component) => component.name?.toLowerCase().includes(query.toLowerCase()) && true);
-		return false;
-	}
-
-	function searchMatchesByComponent(component: componentParams, query: string): boolean {
-		if(component.name.toLowerCase().includes(query.toLowerCase())) {
-			return true;
-		}
-		return false;
-	}
+	
 
 	return !error ? ( 
 		<div className="AccountContainer">

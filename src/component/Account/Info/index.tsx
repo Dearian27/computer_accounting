@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import './styles.css';
 import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
-import { ComputerParams, setComputers, setEditMode } from "../../../../redux/slices/computer";
+import { ComputerParams, componentParams, setComputers, setEditMode } from "../../../../redux/slices/computer";
 import PartDetails, { historyParams } from "../../PartDetails";
 import { MdDeleteSweep } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
@@ -72,10 +72,10 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
         components.map((componentsOneType, index: number) => {
           if(componentsOneType?.id && componentsOneType?.id.length > 0) {
             return componentsOneType.id.map(c => {
-              return <Component key={c} name={componentsOneType.name} type={componentsOneType.type} />
+              return <Component key={c} name={allComponents.find((component: componentParams) => component._id === c).name} type={componentsOneType.type} id={c} computerId={id} withPlus={c === componentsOneType.id[componentsOneType.id.length-1] && (componentsOneType.type === 'ram' || componentsOneType.type === 'disk') ? true : false} />
             })
           } else {
-            return <Component key={index} name={""} type={componentsOneType.type} />
+            return <Component key={index} name={allComponents.find((component: componentParams) => component._id === componentsOneType.id[0])?.name} type={componentsOneType.type} id={componentsOneType.id[0]} computerId={id} />
           }
         })
       }
@@ -94,7 +94,6 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
               </>
               }
             </button>
-
             <button className={`${editMode ? "red" : ""}`} onClick={() => editClickHandler()}>
               {editMode ? 
               <>
@@ -105,7 +104,6 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
                 <MdCreate className="btnIcon" color="aliceblue" />
               </>
               }
-              
             </button>
             <button><MdDeleteSweep className="btnIcon" color="aliceblue"/></button>
         </div>

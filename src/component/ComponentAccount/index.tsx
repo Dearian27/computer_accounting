@@ -1,26 +1,45 @@
 import './style.css';
-import { componentParams, setAllComponents } from '../../../redux/slices/computer';
+import { ComputerParams, clearModal, componentParams, setAllComponents, setComputers } from '../../../redux/slices/computer';
 import { MdDeleteSweep } from "react-icons/md";
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
 import { parser } from '../../componentParser';
-import { useDispatch } from 'react-redux';
+import { GoPlusCircle } from 'react-icons/go';
 
 type ComponentAccountParams = {
 	id: string;
+  choosing?: boolean;
 }
 export type componentTypeVariants = "cpu" | "motherboard" | "gpu" | "case" | "ram" | "disk" | "mouse" | "keyboard" | "power_supply" | "monitor";
 
-const ComponentAccount: React.FC<ComponentAccountParams> = ({ id }) => {
-  const { allComponents } = useAppSelector((state: RootState) => state.computer);
-  const dispatch = useDispatch();
+const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false }) => {
+  const { allComponents, modal, computers } = useAppSelector((state: RootState) => state.computer);
+  const dispatch = useAppDispatch();
   const params = useParams();
   const currentId = id === 'unique' ? params.id : id;
   const component:componentParams = allComponents.find((component: componentParams) => component._id === currentId);
-  const [ computerName, setComputerName ] = useState();
+  const [ computerName, setComputerName ] = useState<string>("");
+  const addComponent = async () => {
+    const res = await axios.post(`/components/${modal.computerId}`, {
+      type: modal.type,
+      currentComponentId: modal.currentComponentId || '',
+      id,
+    });
+    if(res.status === 200) {
+      const index = computers.findIndex((comp: ComputerParams) => comp._id === modal.computerId);
+      const newComputers = [...computers];
+      newComputers[index] = res.data.computer;
+      dispatch(setComputers(newComputers));
+    }
+    if(res.status === 404) {
+      console.log('not found');
+      // return;
+    }
+    dispatch(clearModal(true));
+  }
   
   const getComputerName = async () => {
     if(component?.anchor) {
@@ -69,9 +88,16 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id }) => {
             <span className='grey'>Неприкріплена</span>
           }</div>
         </div>
-        <button className='deleteBtn' onClick={() => deleteHandler()}>
-          <MdDeleteSweep className="btnIcon" color="aliceblue"/>
-        </button>
+
+        {choosing ?  
+          <button className='optionBtn' onClick={() => deleteHandler()}>
+            <MdDeleteSweep className="btnIcon" color="aliceblue"/>
+          </button>
+          :
+          <button className='optionBtn' onClick={() => addComponent()}>
+            <GoPlusCircle style={{height: 30, width: 30}} className="btnIcon" color="aliceblue"/>
+          </button>
+        }
       </div>
     </section>
   : <></>

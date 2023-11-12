@@ -59,6 +59,9 @@
 .modal_btn.animate {
   animation: fadeIn 0.7s ease-out; 
 }
+.modal_btn.second {
+  right: 35px;  
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

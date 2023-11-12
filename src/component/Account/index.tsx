@@ -25,7 +25,7 @@ const Account: React.FC<AccountParams> = ({ id, components, responsible, locatio
 	}
 	
 		return (
-        <section id={id} className="account">
+        <section className="account">
 					<div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 						<div className='computer'>
 							<div style={{display: 'flex', gap: 20}}>
