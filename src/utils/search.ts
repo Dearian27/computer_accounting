@@ -10,7 +10,7 @@ export function searchMatchesByComputer(computer: ComputerParams, query: string)
 	if(computer.responsible.toLowerCase().includes(query.toLowerCase())) {
 		return true;
 	}
-	computer.components.map((component) => component.name?.toLowerCase().includes(query.toLowerCase()) && true);
+	computer.components.map((component) => {if(component.name?.toLowerCase().includes(query.toLowerCase())) return true;});
 	return false;
 }
 

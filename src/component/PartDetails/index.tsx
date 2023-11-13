@@ -26,14 +26,18 @@ const PartDetails: React.FC<HistoriesParams> = ({history}) => {
                     {formattedDate.toLocaleDateString('en-GB')}
                   </span>
                 </div>
-                {item.oldName && item.oldId ?
+                {item.oldName && item.name ?
                   <div className="content">
                     Компонент <Link to={`/components/${item.oldId}`}>{item.oldName}</Link> замінено на <Link to={`/components/${item._id}`}>{item.name}</Link>
                   </div>
-                  :
+                  : item.name && item._id ?
                     <div className="content">
                       Початок експлуатації <Link to={`/components/${item._id}`}>{item.name}</Link>
                     </div>  
+                  : item.oldName && item.oldId &&
+                    <div className="content">
+                      Кінець експлуатації <Link to={`/components/${item._id}`}>{item.oldName}</Link>
+                    </div> 
                   }
                 </div>
             })}
