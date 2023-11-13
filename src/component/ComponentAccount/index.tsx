@@ -1,5 +1,5 @@
 import './style.css';
-import { ComputerParams, clearModal, componentParams, setAllComponents, setComputers } from '../../../redux/slices/computer';
+import { clearModal, componentParams, setAllComponents, setComputers } from '../../../redux/slices/computer';
 import { MdDeleteSweep } from "react-icons/md";
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ type ComponentAccountParams = {
 export type componentTypeVariants = "cpu" | "motherboard" | "gpu" | "case" | "ram" | "disk" | "mouse" | "keyboard" | "power_supply" | "monitor";
 
 const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false }) => {
-  const { allComponents, modal, computers } = useAppSelector((state: RootState) => state.computer);
+  const { allComponents, modal } = useAppSelector((state: RootState) => state.computer);
   const dispatch = useAppDispatch();
   const params = useParams();
   const currentId = id === 'unique' ? params.id : id;
@@ -36,17 +36,26 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
 	}
 
   const addComponent = async () => {
-    const res = await axios.post(`/components/${modal.computerId}`, {
-      type: modal.type,
-      currentComponentId: modal.currentComponentId || '',
-      id,
-    });
+    let res;
+    if(modal.currentComponentId) {
+      res = await axios.put(`/components/multiple/${modal.computerId}`, {
+        type: modal.type,
+        currentComponentId: modal.currentComponentId,
+        id,
+      });
+    } else if (modal.type === 'ram' || modal.type === 'disk') {
+      res = await axios.put(`/components/add/${modal.computerId}`, {
+        type: modal.type,
+        id,
+      });
+    } else {
+      res = await axios.put(`/components/${modal.computerId}`, {
+        type: modal.type,
+        id,
+      });
+    }
     if(res.status === 200) {
       getComputers();
-      // const index = computers.findIndex((comp: ComputerParams) => comp._id === modal.computerId);
-      // const newComputers = [...computers];
-      // newComputers[index] = res.data.computer;
-      // dispatch(setComputers(newComputers));
     }
     if(res.status === 404) {
       console.log('not found');
