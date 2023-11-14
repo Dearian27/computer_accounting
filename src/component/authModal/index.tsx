@@ -15,9 +15,13 @@ const AuthModal: React.FC = () => {
   const closeModal = () => {
     dispatch(setPModal(false));
   }
-  console.log(pModal);
+  // console.log(pModal);
   return (
+<<<<<<< HEAD
     <div style={{display: pModal ? 'none' : 'flex'}} className='pmodalWrapper' onClick={closeModal}>
+=======
+    <div style={{display: false ? 'flex' : 'none'}} className='pmodalWrapper' onClick={closeModal}>
+>>>>>>> 6b0e7cf5a456552d823a86f81b6603baa396c53a
       <section className="modal" onClick={(e) => e.stopPropagation()}>
       <div className='formbox'> 
       <h2>Вхід</h2>

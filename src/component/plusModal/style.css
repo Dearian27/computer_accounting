@@ -1,4 +1,4 @@
-.modalWrapper {
+.pmodalWrapper {
   position: fixed;
   z-index: 15;
   top: 0;
@@ -10,6 +10,7 @@
   background-color: rgba(0, 0, 0, 0.653);
 }
 .modal {
+  box-sizing: border-box;
   z-index: 16;
   padding: 10px;
   height: 600px;
@@ -52,4 +53,84 @@
   color: white;
   font-size: 30px;
   font-family: 'Fixel';
+}
+
+.change_buttons{
+  width: 80px;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	background-color: #50577A;
+	border-radius: 10px;
+	height: 40px;
+}
+
+.change_buttons button{
+  cursor: pointer;
+	padding: 20px;
+	background-color: #50577A;
+	color: white;
+	border-radius: 10px;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s;
+}
+.computerInput { 
+  box-sizing: border-box; 
+  cursor: pointer;
+  margin: 0;
+  font-family: 'Fixel';
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 300px;
+  color: white;
+  font-size: 20px;
+  background-color:#404258;
+  border: 3px solid #50577A;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.computerInput::placeholder {
+  color: rgb(192, 192, 192);
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.h1 {
+  padding: 0 5px;
+  border-radius: 5px;  
+  background-color: white;
+  color: #404258;
+  font-size: 28px;
+  font-family: 'Fixel';
+}
+
+.pModalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+.submitBtn {
+  box-sizing: border-box;
+  background-color: #50577A;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: 'Fixel';
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  width: 300px;
 }

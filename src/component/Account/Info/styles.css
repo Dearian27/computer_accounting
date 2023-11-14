@@ -105,9 +105,6 @@
   gap: 5px;
 }
 .info_line input.active {
-  /* outline-color:white; */
-  /* outline: auto; */
-  /* outline-width: 1px; */
   outline: rgba(255, 255, 255, 0.511) 2px solid;
 }
 
