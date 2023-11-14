@@ -6,9 +6,9 @@ import { HiMiniComputerDesktop } from 'react-icons/hi2';
 import { IoHardwareChip } from 'react-icons/io5';
 import { setPModal } from '../../../redux/slices/user';
 
-const PlusModal: React.FC = () => {
+const AuthModal: React.FC = () => {
 
-  // const [computerTab, setComputerTab] = useState<boolean>(true);
+  const [computerTab, setComputerTab] = useState<boolean>(true);
   const { pModal } = useAppSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
 
@@ -17,12 +17,26 @@ const PlusModal: React.FC = () => {
   }
   console.log(pModal);
   return (
-    <div style={{display: true ? 'flex' : 'none'}} className='pmodalWrapper' onClick={closeModal}>
+    <div style={{display: pModal ? 'none' : 'flex'}} className='pmodalWrapper' onClick={closeModal}>
       <section className="modal" onClick={(e) => e.stopPropagation()}>
-        
+      <div className='formbox'> 
+      <h2>Вхід</h2>
+      <div className='input-box'>
+        <input type="email" placeholder='Email' />
+      </div>
+      <div className='input-box'>
+        <input type="password" placeholder='Password' />
+      </div>
+
+      <button className='signInBtn'>Увійти</button>
+      <p>
+      <samp className='text'>Немає аккаунта? <a href="">Створіть</a></samp>
+      </p>
+       </div>  
+       
       </section>    
     </div>
   )
 }
 
-export default PlusModal;
+export default AuthModal;

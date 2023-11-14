@@ -10,46 +10,68 @@
   background-color: rgba(0, 0, 0, 0.653);
 }
 .modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 16;
   padding: 10px;
-  height: 600px;
-  width: 800px;
+
   border-radius: 15px;
   background-color: #404258;
 }
-
-.search_bar {
-  height: 30px;
-  background-color: #50577A;
-  border: none;
+.formbox .input-box input{
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 0;
+  font-family: 'Fixel';
+  background: transparent;
   outline: none;
-  border-radius: 10px;
+  border: none;
+  width: 300px;
   color: white;
   font-size: 20px;
+  background-color:#404258;
+  border: 3px solid #50577A;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
-.search_wrapper{
-  box-sizing: border-box;
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: center;
-	padding: 5px 10px;
-	width: 100%;
-	background-color: #50577A;
-	border-radius: 10px;
+.formbox .input-box input::placeholder {
+  color: rgb(192, 192, 192);
 }
-.search_wrapper input{
-  width: 100%;
-}
-.container{
-  flex-direction: column;
-  display: flex;
-  gap: 10px;
-  padding: 10px 0;
-}
-
-.not_found {
+.formbox h2{
   color: white;
-  font-size: 30px;
+  text-align: center;
+  font-size: 35px;
   font-family: 'Fixel';
 }
+
+.formbox {
+  gap: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signInBtn{
+  box-sizing: border-box;
+  background-color: #50577A;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family: 'Fixel';
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  width: 300px;
+}
+
+.text{
+  color:white;
+}
+
+a{
+  
+  color:rgb(43, 255, 110) ;
+}
+
+

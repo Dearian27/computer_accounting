@@ -6,10 +6,13 @@ import { store } from '../redux/store';
 import { IconContext } from "react-icons";
 import Modal from './component/Modal';
 import PlusModal from './component/plusModal';
+import AuthModal from './component/authModal';
 
 function App() {
   return (
+    
     <Provider store={store}>
+      
       <IconContext.Provider value={{ color: "white", className: "btnIcon"}}>
         <main style={{backgroundColor: '#404258'}}>
           <Header />
@@ -17,6 +20,7 @@ function App() {
         </main>
         <Modal />
         <PlusModal />
+        <AuthModal />
       </IconContext.Provider>
     </Provider>
   )
