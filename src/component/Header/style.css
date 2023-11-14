@@ -21,6 +21,7 @@
 }
 
 .change_buttons button{
+	cursor: pointer;
 	padding: 20px;
 	background-color: #50577A;
 	color: white;
@@ -57,6 +58,7 @@
 	background-color: #50577A;
 }
 .header .add_button{
+	cursor: pointer;
 	background-color: #50577A;
 	color: white;
 	padding: 0px 50px;
