@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import { IconContext } from "react-icons";
 import Modal from './component/Modal';
+import PlusModal from './component/plusModal';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <AccountContainer />
         </main>
         <Modal />
+        <PlusModal />
       </IconContext.Provider>
     </Provider>
   )

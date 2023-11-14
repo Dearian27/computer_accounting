@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch } from '../../../redux/hooks';
 import { setSearchText } from '../../../redux/slices/computer';
+import { setPModal } from '../../../redux/slices/user';
 
 function Header() {
 	const dispatch = useAppDispatch();
@@ -60,7 +61,7 @@ function Header() {
 				<input type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
 				<MdSearch className="btnIcon" />
 			</div>
-			<button className='add_button'>
+			<button className='add_button' onClick={() => dispatch(setPModal(true))}>
 				<MdAddCircle className="btnIcon" />
 			</button>	
 		</div>
