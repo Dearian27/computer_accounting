@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setActive } from '../../../redux/slices/computer';
 import { historyParams } from '../PartDetails';
 import { componentTypeVariants } from '../ComponentAccount';
+import { IoIosArrowUp } from "react-icons/io";
 
 type AccountParams = {
 	id: string;
@@ -40,8 +41,9 @@ const Account: React.FC<AccountParams> = ({ id, components, responsible, locatio
 							</div>
 							<div className='computer_name'>{compName}</div>
 						</div>
-
-						<button onClick={() => expandHandler()}>Button</button>
+						<button onClick={() => expandHandler()}>
+							<IoIosArrowUp className={`${active.includes(id) ? 'active' : 'default'}`} />
+						</button>
 					</div>
         {active.includes(id) &&
 					<Info id={id} components={components} responsible={responsible} location={location} history={history} compName={compName} />

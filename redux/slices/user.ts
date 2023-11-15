@@ -4,11 +4,19 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 type userParams = {
   pModal: boolean,
   authModal: boolean,
+  user: userAccountParams | null
+}
+export type userAccountParams = {
+  name: string,
+  surname: string,
+  email: string,
+  status: string
 }
 
 const initialState: userParams = {
   pModal: false,
   authModal: false,
+  user: null
 } 
 
 const userSlice = createSlice({
@@ -20,9 +28,12 @@ const userSlice = createSlice({
     },
     setAModal: (state: userParams, action: PayloadAction<boolean>) => {
       state.authModal = action.payload;
+    },
+    setUser: (state: userParams, action: PayloadAction<userAccountParams>) => {
+      state.user = action.payload;
     }
   }
 })
 
-export const { setPModal, setAModal } = userSlice.actions;
+export const { setPModal, setAModal, setUser } = userSlice.actions;
 export default userSlice.reducer;

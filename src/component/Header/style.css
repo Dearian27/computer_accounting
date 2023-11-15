@@ -71,3 +71,25 @@
 .tabBtn.active {
 	background-color: whitesmoke;
 }
+.btnIcon.huge {
+	height: 32px;
+	width: 32px;
+}
+
+.btnLogin {
+	cursor: pointer;
+	background-color: #50577A;
+	height: 40px;
+	border-radius: 10px;
+	border: none;
+	color: white;
+	font-family: 'Fixel';
+	font-size: 22px;
+	padding: 0px 20px;
+}
+.header .name {
+	font-size: 26px;
+	font-family: 'Fixel';
+	font-weight: 600;
+	color: white;
+}

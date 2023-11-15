@@ -1,36 +1,63 @@
 .account{
-    font-family: 'Fixel';
-    color: white;
-    overflow: hidden;
-    background-color: #50577A;
-    border-radius: 10px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	font-family: 'Fixel';
+	color: white;
+	overflow: hidden;
+	background-color: #50577A;
+	border-radius: 10px;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .field {
-    display: flex;
-    color: #8892b6;
-    align-items: center;
-    gap: 3px;
+	display: flex;
+	color: #8892b6;
+	align-items: center;
+	gap: 3px;
 }
 .icon {
-    height: 16px;
+	height: 16px;
 }
 .computer_name{
-    font-family: Fixel-Bold;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px 0;
-    font-size: 24px;
+	font-family: Fixel-Bold;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px 0;
+	font-size: 24px;
 }
 
 .account button{
-    background-color: #50577A;
-    color: white;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
+	background-color: #50577A;
+	color: white;
+	border-radius: 10px;
+	border: none;
+	cursor: pointer;
+}
+.active {
+	transform: rotateZ(180deg);
+	animation: rotatedown 0.7s ease-in;
+	color: greenyellow !important;
+}
+.default {
+	animation: rotateup 0.7s ease-in;
+}
+@keyframes rotatedown {
+	0% {
+		color: white;
+		transform: rotateZ(0deg);
+	}
+	100% {
+		color: greenyellow;
+		transform: rotateZ(-180deg);
+	}
+}
+@keyframes rotateup {
+	0% {
+		color: greenyellow;
+		transform: rotateZ(-180deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
 }

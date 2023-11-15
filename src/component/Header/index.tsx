@@ -5,11 +5,13 @@ import { IoHardwareChip } from "react-icons/io5";
 import { HiMiniComputerDesktop } from "react-icons/hi2";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useAppDispatch } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setSearchText } from '../../../redux/slices/computer';
 import { setPModal } from '../../../redux/slices/user';
+import { RootState } from '../../../redux/store';
 
 function Header() {
+	const { user } = useAppSelector((state: RootState) => state.user);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -61,9 +63,26 @@ function Header() {
 				<input type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
 				<MdSearch className="btnIcon" />
 			</div>
+			<div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
 			<button className='add_button' onClick={() => dispatch(setPModal(true))}>
-				<MdAddCircle className="btnIcon" />
+				<MdAddCircle className="btnIcon huge" />
 			</button>	
+			{!!user ?
+				<button className='btnLogin'>
+					Увійти
+				</button>
+			:
+			<>
+				<span className='name'>
+					Юрій Дзюбак
+					{/* {user.name} {user.surname} */}
+				</span>
+				<button className='btnLogin'>
+					Вийти
+				</button>
+			</>
+			}
+			</div>
 		</div>
 	)
 }
