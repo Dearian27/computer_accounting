@@ -29,11 +29,14 @@ const userSlice = createSlice({
     setAModal: (state: userParams, action: PayloadAction<boolean>) => {
       state.authModal = action.payload;
     },
+    authModal: (state: userParams, action: PayloadAction<boolean>) => {
+      state.authModal = action.payload;
+    },
     setUser: (state: userParams, action: PayloadAction<userAccountParams>) => {
       state.user = action.payload;
     }
   }
 })
 
-export const { setPModal, setAModal, setUser } = userSlice.actions;
+export const { setPModal, setAModal,  setUser } = userSlice.actions;
 export default userSlice.reducer;

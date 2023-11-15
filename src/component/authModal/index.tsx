@@ -2,7 +2,7 @@ import './style.css';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
-import { setPModal } from '../../../redux/slices/user';
+import { setAModal } from '../../../redux/slices/user';
 
 const AuthModal: React.FC = () => {
 
@@ -11,7 +11,7 @@ const AuthModal: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const closeModal = () => {
-    dispatch(setPModal(false));
+    dispatch(setAModal(false));
   }
  
 
