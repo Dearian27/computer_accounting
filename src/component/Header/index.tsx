@@ -60,7 +60,7 @@ function Header() {
 				</button>
 			</div>
 			<div className='search_line'>
-				<input type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
+				<input placeholder='Пошук' type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
 				<MdSearch className="btnIcon" />
 			</div>
 			<div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>

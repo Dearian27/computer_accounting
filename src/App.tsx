@@ -7,6 +7,7 @@ import { IconContext } from "react-icons";
 import Modal from './component/Modal';
 import PlusModal from './component/plusModal';
 import AuthModal from './component/authModal';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -21,6 +22,18 @@ function App() {
         <Modal />
         <PlusModal />
         <AuthModal />
+        <Toaster
+          position="bottom-center"
+          reverseOrder={false}
+          toastOptions={{
+            className: '',
+            style: {
+              padding: '12px 20px',
+              fontSize: '16px',
+              fontFamily: 'Fixel'
+            },
+          }}
+        />
       </IconContext.Provider>
     </Provider>
   )

@@ -37,7 +37,7 @@ const Modal: React.FC = () => {
     <div style={{display: modal.isActive ? 'flex' : 'none'}} className='modalWrapper' onClick={closeModal}>
       <section className="modal" onClick={(e) => e.stopPropagation()}>
         <div className='search_wrapper'>
-          <input className='search_bar' type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
+          <input className='search_bar' placeholder='Пошук' type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
           <MdSearch className="btnIcon" />
         </div>
         <div className='container'>
