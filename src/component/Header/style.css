@@ -70,6 +70,7 @@
 
 .tabBtn.active {
 	background-color: whitesmoke;
+	animation: rotation 0.7s ease-in-out; 
 }
 .btnIcon.huge {
 	height: 32px;
@@ -92,4 +93,18 @@
 	font-family: 'Fixel';
 	font-weight: 600;
 	color: white;
+}
+@keyframes rotation {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	33% {
+		transform: rotateZ(-10deg);
+	}
+	66% {
+		transform: rotateZ(10deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
 }
