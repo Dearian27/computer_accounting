@@ -15,7 +15,7 @@ const AuthModal: React.FC = () => {
   }
  
 
-  // console.log(pModal);
+ 
   return (
     <div style={{display: authModal ? 'flex' : 'none'}} className='amodalWrapper' onClick={closeModal}>
       { authTab ?

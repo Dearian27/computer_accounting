@@ -96,6 +96,9 @@
 .plusmodal .computerInput::placeholder {
   color: rgb(192, 192, 192);
 }
+input::placeholder {
+  color: rgb(192, 192, 192);
+}
 .plusmodal .top {
   display: flex;
   justify-content: space-between;
@@ -133,4 +136,23 @@
   padding: 10px 15px;
   border: none;
   width: 300px;
+}
+
+.tabBtn.active {
+	background-color: whitesmoke;
+	animation: rotation 0.7s ease-in-out; 
+}
+@keyframes rotation {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	33% {
+		transform: rotateZ(-10deg);
+	}
+	66% {
+		transform: rotateZ(10deg);
+	}
+	100% {
+		transform: rotateZ(0deg);
+	}
 }

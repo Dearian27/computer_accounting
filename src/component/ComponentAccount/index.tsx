@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
 import { parser } from '../../componentParser';
 import { GoPlusCircle } from 'react-icons/go';
+import toast from 'react-hot-toast';
 
 type ComponentAccountParams = {
 	id: string;
@@ -56,8 +57,10 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
     }
     if(res.status === 200) {
       getComputers();
+      toast.success('Компонент додано успішно!'); 
     }
     if(res.status === 404) {
+      toast.success(res.data.message); 
       console.log('not found');
       // return;
     }
@@ -80,6 +83,7 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
       const res = await axios.delete(`/components/delete/${component._id}`);
       if(res.status === 200) {
         getComputers();
+        toast.success('Компонент видалено успішно!'); 
       }
     } catch (err) {
       console.log(err);

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import './styles.css';
 import { useAppSelector, useAppDispatch } from '../../../../redux/hooks';
 import Component from "../../Component";
-import { ComputerParams, componentParams, setComputers, setEditMode } from "../../../../redux/slices/computer";
+import { componentParams, setAllComponents, setComputers, setEditMode } from "../../../../redux/slices/computer";
 import PartDetails, { historyParams } from "../../PartDetails";
 import { MdDeleteSweep } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
@@ -11,6 +11,7 @@ import { MdSaveAs } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 import axios from "../../../utils/axios";
 import { componentTypeVariants } from "../../ComponentAccount";
+import toast from "react-hot-toast";
 
 
 type AccountParams = {
@@ -27,9 +28,21 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
   const [inputs, setInputs] = useState<{name: string; responsible: string; location: string}>({
     name: compName, responsible, location
   });
-  const { allComponents, editMode, computers } = useAppSelector(state => state.computer);
+  const { allComponents, editMode } = useAppSelector(state => state.computer);
   const [textArea, setTextArea] = useState('');
   
+  const getComputers = async() => {
+		try {
+			const res = await axios.get('/computers/');
+			dispatch(setComputers(res.data.computers));
+			
+			const res2 = await axios.get('/components/');
+			dispatch(setAllComponents(res2.data.components));
+		} catch(err) {
+			console.error(err);
+		}
+	}
+
   const inputsChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setInputs((prevInputs) => ({
       ...prevInputs,
@@ -41,15 +54,17 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
   }
   const handleSubmit = async() => {
     dispatch(setEditMode(false));
-    const { data } = await axios.post(`/computers/update/${id}`, {
+    const res = await axios.post(`/computers/update/${id}`, {
       name: inputs.name,
       responsible: inputs.responsible,
       location: inputs.location
     })
-    const index = computers.findIndex((comp: ComputerParams) => comp._id === id);
-    const newComputers = [...computers];
-    newComputers[index] = data.computer;
-    dispatch(setComputers(newComputers))
+    if(res.status === 200) {
+      toast.success(res.data.message); 
+    } else {
+      toast.error(res.data.message); 
+    }
+    getComputers();
   }
 
   return (
