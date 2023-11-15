@@ -34,12 +34,12 @@
 	border: none;
 	cursor: pointer;
 }
-.active {
+.btnIcon.active {
 	transform: rotateZ(180deg);
 	animation: rotatedown 0.7s ease-in;
 	color: greenyellow !important;
 }
-.default {
+.btnIcon.default {
 	animation: rotateup 0.7s ease-in;
 }
 @keyframes rotatedown {
