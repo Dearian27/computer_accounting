@@ -37,16 +37,29 @@ const AuthModal: React.FC = () => {
       <section className="amodal" onClick={(e) => e.stopPropagation()}>
         <div className='formbox'> 
         <h2>Вхід</h2>
+        
+
+
+        <div className='input-box'>
+          <input type="name" placeholder='Name' />
+        </div>
+
+
+        <div className='input-box'>
+          <input type="surname" placeholder='Surname' />
+        </div>
+
         <div className='input-box'>
           <input type="email" placeholder='Email' />
         </div>
+
         <div className='input-box'>
           <input type="password" placeholder='Password' />
         </div>
 
-        <button className='signInBtn'>Увійти</button>
+        <button className='authBtn'>Створити</button>
         <p>
-        <samp className='text'>Немає аккаунта? <span>Створіть</span></samp>
+        <samp className='text'>Маєте аккаунт? <span>Увійдіть</span></samp>
         </p>
         </div>  
       </section>

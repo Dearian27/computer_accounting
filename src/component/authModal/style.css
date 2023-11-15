@@ -52,7 +52,7 @@
   flex-direction: column;
 }
 
-.signInBtn{
+.authBtn{
   box-sizing: border-box;
   background-color: #50577A;
   color: white;
