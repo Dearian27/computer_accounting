@@ -6,9 +6,8 @@
   padding-top: 60px;
 }
 .error {
-  padding-top: 60px;
+  padding: 80px 30px 30px 30px;
   font-family: 'Fixel';
   font-size: 40px;
-  padding: 30px;
   color: rgb(250, 64, 64);
 }
