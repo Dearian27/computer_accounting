@@ -9,7 +9,7 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.653);
 }
-.modal {
+.plusmodal {
   box-sizing: border-box;
   z-index: 16;
   padding: 10px;
@@ -19,7 +19,7 @@
   background-color: #404258;
 }
 
-.search_bar {
+.plusmodal .search_bar {
   height: 30px;
   background-color: #50577A;
   border: none;
@@ -28,7 +28,7 @@
   color: white;
   font-size: 20px;
 }
-.search_wrapper{
+.plusmodal .search_wrapper{
   box-sizing: border-box;
 	display: flex;
 	flex-wrap: nowrap;
@@ -39,23 +39,23 @@
 	background-color: #50577A;
 	border-radius: 10px;
 }
-.search_wrapper input{
+.plusmodal .search_wrapper input{
   width: 100%;
 }
-.container{
+.plusmodal .container{
   flex-direction: column;
   display: flex;
   gap: 10px;
   padding: 10px 0;
 }
 
-.not_found {
+.plusmodal .not_found {
   color: white;
   font-size: 30px;
   font-family: 'Fixel';
 }
 
-.change_buttons{
+.plusmodal .change_buttons{
   width: 80px;
 	display: flex;
 	flex-wrap: nowrap;
@@ -77,7 +77,7 @@
 	justify-content: center;
 	transition: 0.4s;
 }
-.computerInput { 
+.plusmodal .computerInput { 
   box-sizing: border-box; 
   cursor: pointer;
   margin: 0;
@@ -93,15 +93,15 @@
   padding: 5px 10px;
   border-radius: 5px;
 }
-.computerInput::placeholder {
+.plusmodal .computerInput::placeholder {
   color: rgb(192, 192, 192);
 }
-.top {
+.plusmodal .top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.h1 {
+.plusmodal .h1 {
   padding: 0 5px;
   border-radius: 5px;  
   background-color: white;
@@ -110,7 +110,7 @@
   font-family: 'Fixel';
 }
 
-.pModalContainer {
+.plusmodal .pModalContainer {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -122,7 +122,7 @@
   padding: 10px;
   gap: 10px;
 }
-.submitBtn {
+.plusmodal .submitBtn {
   box-sizing: border-box;
   background-color: #50577A;
   color: white;

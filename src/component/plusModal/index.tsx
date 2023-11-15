@@ -91,7 +91,7 @@ const PlusModal: React.FC = () => {
 
   return (
     <div style={{display: pModal ? 'flex' : 'none'}} className='pmodalWrapper' onClick={closeModal}>
-      <form onSubmit={e => e.preventDefault()} className="modal" onClick={(e) => e.stopPropagation()}>
+      <form onSubmit={e => e.preventDefault()} className="plusmodal" onClick={(e) => e.stopPropagation()}>
         <div className="top">
           <div className='change_buttons'>
             <button type='button' onClick={() => setComputerTab(true)} className={`tabBtn ${computerTab ? 'active' : ''}`}>
@@ -132,8 +132,8 @@ const PlusModal: React.FC = () => {
         : <div className='pModalContainer'>
           <input className="computerInput" placeholder='Назва' value={componentName} onChange={(event) => setComponentName(event.target.value)}/>
           <select value={componentType} onChange={(e:ChangeEvent<HTMLSelectElement>) => setComponentType(e.target.value as typeVariantsUkr)} className='computerInput'>
-            {keys.map((type: typeVariants) => {
-              return <option>{parser[type]}</option>
+            {keys.map((type: typeVariants, index) => {
+              return <option key={index}>{parser[type]}</option>
             })}
           </select>
           <button onClick={handleCreateComponent} type='submit' className='submitBtn'>

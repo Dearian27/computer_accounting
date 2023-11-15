@@ -1,4 +1,4 @@
-.pmodalWrapper {
+.amodalWrapper {
   position: fixed;
   z-index: 15;
   top: 0;
@@ -9,7 +9,7 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.653);
 }
-.modal {
+.amodal {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,8 +69,11 @@
   color:white;
 }
 
-a {
+.formbox span {
   color:#2bff6e;
 }
-
+.formbox span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 

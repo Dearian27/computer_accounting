@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { RootState } from '../../../redux/store';
 import { setPModal } from '../../../redux/slices/user';
-import { Link } from 'react-router-dom';
 
 const AuthModal: React.FC = () => {
 
@@ -16,9 +15,9 @@ const AuthModal: React.FC = () => {
   }
   // console.log(pModal);
   return (
-    <div style={{display: authModal ? 'none' : 'flex'}} className='pmodalWrapper' onClick={closeModal}>
+    <div style={{display: authModal ? 'flex' : 'none'}} className='amodalWrapper' onClick={closeModal}>
       { authTab ?
-      <section className="modal" onClick={(e) => e.stopPropagation()}>
+      <section className="amodal" onClick={(e) => e.stopPropagation()}>
         <div className='formbox'> 
         <h2>Вхід</h2>
         <div className='input-box'>
@@ -30,12 +29,12 @@ const AuthModal: React.FC = () => {
 
         <button className='signInBtn'>Увійти</button>
         <p>
-        <samp className='text'>Немає аккаунта? <a href="">Створіть</a></samp>
+        <samp className='text'>Немає аккаунта? <span>Створіть</span></samp>
         </p>
         </div>
       </section>
       :
-      <section className="modal" onClick={(e) => e.stopPropagation()}>
+      <section className="amodal" onClick={(e) => e.stopPropagation()}>
         <div className='formbox'> 
         <h2>Вхід</h2>
         <div className='input-box'>

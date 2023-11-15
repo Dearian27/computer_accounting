@@ -79,10 +79,7 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
     try {
       const res = await axios.delete(`/components/delete/${component._id}`);
       if(res.status === 200) {
-        const newComponents = [...allComponents];
-        const index = newComponents.findIndex(component => component._id === currentId);
-        newComponents.splice(index, 1);
-        dispatch(setAllComponents(newComponents)); 
+        getComputers();
       }
     } catch (err) {
       console.log(err);
