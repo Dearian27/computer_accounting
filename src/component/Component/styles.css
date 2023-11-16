@@ -44,23 +44,32 @@
 }
 
 .modal_btn {
-  display: block;
   position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  padding-left: 5px;
   right: 10px;
   top: 50%;
+  background-color: #404258;
   transform: translateY(-50%);
-  height: 20px;
-  width: 20px;
-  animation: none;
 }
-.modal_btn.none {
+.modal_btn .item {
+  height: 20px;
+  animation: none;
+  background-color: transparent !important;
+}
+.modal_btn .item.none {
   display: none;
 }
-.modal_btn.animate {
+.modal_btn .item.animate {
   animation: fadeIn 0.7s ease-out; 
 }
 .modal_btn.second {
   right: 35px;  
+}
+.modal_btn.third {
+  right: 55px;  
 }
 @keyframes fadeIn {
   0% {

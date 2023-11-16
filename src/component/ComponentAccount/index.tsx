@@ -23,6 +23,8 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
   const currentId = id === 'unique' ? params.id : id;
   const component:componentParams = allComponents.find((component: componentParams) => component._id === currentId);
   const [ computerName, setComputerName ] = useState<string>("");
+  const { user } = useAppSelector((state: RootState) => state.user);
+  console.log(user)
 
   const getComputers = async() => {
 		try {
@@ -58,11 +60,8 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
     if(res.status === 200) {
       getComputers();
       toast.success('Компонент додано успішно!'); 
-    }
-    if(res.status === 404) {
-      toast.success(res.data.message); 
-      console.log('not found');
-      // return;
+    } else {
+      toast.error(res.data.message); 
     }
     dispatch(clearModal(true));
   }
@@ -79,15 +78,15 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
   }
 
   const deleteHandler = async () => {
-    try {
-      const res = await axios.delete(`/components/delete/${component._id}`);
-      if(res.status === 200) {
+    axios.delete(`/components/delete/${component._id}`)
+    .then(() => {      
         getComputers();
-        toast.success('Компонент видалено успішно!'); 
-      }
-    } catch (err) {
-      console.log(err);
-    }
+        toast.success('Компонент видалено успішно!');
+    })
+    .catch((error) => {
+      toast.error(error.response.data.message);
+      console.error(error);
+    })
 	}
 	
   useEffect(() => {
@@ -115,7 +114,7 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
 
         {!choosing ?  
           <button className='optionBtn' onClick={() => deleteHandler()}>
-            <MdDeleteSweep className="btnIcon" color="aliceblue"/>
+            <MdDeleteSweep className="btnIcon" color={user ? "aliceblue" : "grey"}/>
           </button>
           :
           <button className='optionBtn' onClick={() => addComponent()}>

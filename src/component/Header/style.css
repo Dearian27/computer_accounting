@@ -58,6 +58,8 @@
 	background-color: #50577A;
 }
 .header .add_button{
+	display: flex;
+	align-items: center;
 	cursor: pointer;
 	background-color: #50577A;
 	color: white;

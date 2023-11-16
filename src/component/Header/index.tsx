@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setSearchText } from '../../../redux/slices/computer';
-import { setAModal, setPModal } from '../../../redux/slices/user';
+import { setAModal, setPModal, setUser } from '../../../redux/slices/user';
 import { RootState } from '../../../redux/store';
 
 function Header() {
@@ -25,6 +25,11 @@ function Header() {
 			navigate('/');
 		}
 	}
+	const signOutHandler = () => {
+		dispatch(setUser(null));
+		localStorage.removeItem('token');
+    localStorage.removeItem('user');
+	}
 
 	useEffect(() => {
 			const timeoutId = setTimeout(() => {
@@ -35,52 +40,56 @@ function Header() {
 
 	return (
 		<div className="header">
-			<div className='change_buttons'>
-				<button onClick={() => navigate('/')} className={`tabBtn ${!location.pathname.startsWith('/components/') ? 'active' : ''}`}>
-					{ !location.pathname.startsWith('/components/') ?
-						<>
-							<HiMiniComputerDesktop className="btnIcon" color="#6d759b" />
-						</>
-						:
-						<>
-							<HiMiniComputerDesktop className="btnIcon" />
-						</>
-					}
-				</button>
-				<button onClick={() => navigate('/components/')} className={`tabBtn ${location.pathname.startsWith('/components/') ? 'active' : ''}`}>
-					{ location.pathname.startsWith('/components/') ?
-						<>
-							<IoHardwareChip  className="btnIcon" color="#6d759b"  />
-						</>
-						:
-						<>
-							<IoHardwareChip className="btnIcon"  />
-						</>
-					}
-				</button>
+			<div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
+				<div className='change_buttons'>
+					<button onClick={() => navigate('/')} className={`tabBtn ${!location.pathname.startsWith('/components/') ? 'active' : ''}`}>
+						{ !location.pathname.startsWith('/components/') ?
+							<>
+								<HiMiniComputerDesktop className="btnIcon" color="#6d759b" />
+							</>
+							:
+							<>
+								<HiMiniComputerDesktop className="btnIcon" />
+							</>
+						}
+					</button>
+					<button onClick={() => navigate('/components/')} className={`tabBtn ${location.pathname.startsWith('/components/') ? 'active' : ''}`}>
+						{ location.pathname.startsWith('/components/') ?
+							<>
+								<IoHardwareChip  className="btnIcon" color="#6d759b"  />
+							</>
+							:
+							<>
+								<IoHardwareChip className="btnIcon"  />
+							</>
+						}
+					</button>
+				</div>
+				{user &&
+					<button className='add_button' onClick={() => dispatch(setPModal(true))}>
+						<MdAddCircle className="btnIcon huge" />
+					</button>
+				}
 			</div>
+
 			<div className='search_line'>
 				<input placeholder='Пошук' type="text" value={search} onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event?.target.value)} />
 				<MdSearch className="btnIcon" />
 			</div>
 			<div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
-			<button className='add_button' onClick={() => dispatch(setPModal(true))}>
-				<MdAddCircle className="btnIcon huge" />
-			</button>	
-			{!user ?
-				<button onClick={() => dispatch(setAModal(true))} className='btnLogin'>
-					Увійти
-				</button>
-			:
+			{user ?
 			<>
 				<span className='name'>
-					Юрій Дзюбак
-					{/* {user.name} {user.surname} */}
+					{user.name} {user.surname}
 				</span>
-				<button className='btnLogin'>
+				<button className='btnLogin' onClick={signOutHandler}>
 					Вийти
 				</button>
 			</>
+			:
+			<button onClick={() => dispatch(setAModal(true))} className='btnLogin'>
+				Увійти
+			</button>
 			}
 			</div>
 		</div>

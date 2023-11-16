@@ -8,6 +8,7 @@ import { setPModal } from '../../../redux/slices/user';
 import axios from '../../utils/axios';
 import { setAllComponents, setComputers } from '../../../redux/slices/computer';
 import { parser, typeVariants, typeVariantsUkr } from '../../componentParser';
+import toast from 'react-hot-toast';
 
 type computerInputsParams = {
   name: string,
@@ -60,7 +61,9 @@ const PlusModal: React.FC = () => {
     });
     if(res.status === 200) {
       console.log(res);
-      //success
+      toast.success(res.data.message);
+    } else {
+      toast.error(res.data.message);
     }
     closeModal();
   }

@@ -63,6 +63,8 @@
   gap: 10px;
 }
 .control_buttons button{
+  display: flex;
+  justify-content: flex-start;
   font-size: 16px;
   font-family: 'Fixel';
   font-weight: bold;

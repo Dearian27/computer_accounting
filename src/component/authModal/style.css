@@ -48,7 +48,7 @@
 }
 
 .formbox {
-  gap: 30px;
+  gap: 10px;
   display: flex;
   align-items: center;
   flex-direction: column;

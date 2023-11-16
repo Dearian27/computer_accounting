@@ -7,16 +7,20 @@ type userParams = {
   user: userAccountParams | null
 }
 export type userAccountParams = {
+  _id: string,
   name: string,
   surname: string,
   email: string,
-  status: string
+  status: string,
+  __v: number
 }
+
+const storedUser: string | null = localStorage.getItem('user');
 
 const initialState: userParams = {
   pModal: false,
   authModal: false,
-  user: null
+  user: storedUser ? JSON.parse(storedUser) : null
 } 
 
 const userSlice = createSlice({
@@ -32,7 +36,7 @@ const userSlice = createSlice({
     authModal: (state: userParams, action: PayloadAction<boolean>) => {
       state.authModal = action.payload;
     },
-    setUser: (state: userParams, action: PayloadAction<userAccountParams>) => {
+    setUser: (state: userParams, action: PayloadAction<userAccountParams | null>) => {
       state.user = action.payload;
     }
   }
