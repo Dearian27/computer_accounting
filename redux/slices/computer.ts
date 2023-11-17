@@ -44,7 +44,7 @@ const initialState: userParams = {
     isActive: false,
     computerId: "",
     type: '',
-  }
+  },
 }
 const computerSlice: Slice = createSlice({
   initialState,

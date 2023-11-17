@@ -36,11 +36,11 @@
   transition: 0.3s ease-in-out;
   border: 1px solid grey;
 }
-.item:hover {
+.history .item:hover {
   background-color: #34394d;
   border-color: lawngreen;
 }
-.item .date {
+.history .item .date {
   width: 100%;
   display: flex;
   justify-content: space-between;

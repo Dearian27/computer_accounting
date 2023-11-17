@@ -1,0 +1,38 @@
+.user_account {
+ 
+}
+.user {
+  width: 100%; 
+  padding: 10px 20px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #50577A;
+  border: none;
+  border-radius: 10px;
+}
+.user .values {
+  font-family: 'Fixel';
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.user .status {
+  color: #9f9f9f;
+  font-size: 16px;
+}
+.user .name {
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+}
+.buttons {
+  margin-top: 10px;
+  gap: 10px;
+}
+.buttons .icon {
+  height: 22px;
+  width: 22px;
+} 
+.buttons .item:hover {
+}

@@ -4,7 +4,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 type userParams = {
   pModal: boolean,
   authModal: boolean,
-  user: userAccountParams | null
+  user: userAccountParams | null,
+  adminModal: boolean 
 }
 export type userAccountParams = {
   _id: string,
@@ -20,7 +21,8 @@ const storedUser: string | null = localStorage.getItem('user');
 const initialState: userParams = {
   pModal: false,
   authModal: false,
-  user: storedUser ? JSON.parse(storedUser) : null
+  user: storedUser ? JSON.parse(storedUser) : null,
+  adminModal: false,
 } 
 
 const userSlice = createSlice({
@@ -36,11 +38,14 @@ const userSlice = createSlice({
     authModal: (state: userParams, action: PayloadAction<boolean>) => {
       state.authModal = action.payload;
     },
+    setAdminModal: (state: userParams, action: PayloadAction<boolean>) => {
+      state.adminModal = action.payload;
+    },
     setUser: (state: userParams, action: PayloadAction<userAccountParams | null>) => {
       state.user = action.payload;
     }
   }
 })
 
-export const { setPModal, setAModal,  setUser } = userSlice.actions;
+export const { setPModal, setAModal,  setUser, setAdminModal } = userSlice.actions;
 export default userSlice.reducer;

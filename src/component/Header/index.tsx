@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setSearchText } from '../../../redux/slices/computer';
-import { setAModal, setPModal, setUser } from '../../../redux/slices/user';
+import { setAModal, setAdminModal, setPModal, setUser } from '../../../redux/slices/user';
 import { RootState } from '../../../redux/store';
 
 function Header() {
@@ -68,6 +68,11 @@ function Header() {
 				{user &&
 					<button className='add_button' onClick={() => dispatch(setPModal(true))}>
 						<MdAddCircle className="btnIcon huge" />
+					</button>
+				}
+				{user?.status === 'admin' &&
+					<button onClick={() => dispatch(setAdminModal(true))} className='btnLogin' style={{fontWeight: '900'}}>
+						ADMIN
 					</button>
 				}
 			</div>

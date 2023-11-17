@@ -1,0 +1,24 @@
+.adminModalWrapper {
+  position: fixed;
+  z-index: 15;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.653);
+}
+.adminModal {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 16;
+  padding: 10px;
+  height: 600px;
+  width: 800px;
+  border-radius: 15px;
+  background-color: #404258;
+}

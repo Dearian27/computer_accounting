@@ -37,10 +37,17 @@
   height: 100%;
   width: 100%;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   background-color: #404258;
   padding: 0 10px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  transition: color 0.6s ease-in-out;
+}
+.info_list .btn:hover {
+  color: greenyellow;
 }
 
 .modal_btn {
@@ -54,15 +61,15 @@
   background-color: #404258;
   transform: translateY(-50%);
 }
-.modal_btn .item {
+.info_line .modal_btn .item {
   height: 20px;
   animation: none;
   background-color: transparent !important;
 }
-.modal_btn .item.none {
+.info_line .modal_btn .item.none {
   display: none;
 }
-.modal_btn .item.animate {
+.info_line .modal_btn .item.animate {
   animation: fadeIn 0.7s ease-out; 
 }
 .modal_btn.second {
