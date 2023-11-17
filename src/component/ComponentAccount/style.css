@@ -47,3 +47,9 @@
 .link:hover {
   color: lawngreen;
 }
+
+.account .not_found {
+  font-family: 'Fixel';
+  color: white;
+  padding: 50px 10px;
+}

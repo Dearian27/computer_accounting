@@ -123,6 +123,8 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
         }
       </div>
     </section>
+  : id === 'unique' ?
+    <div className='not_found'>Компонент не знайдено</div>
   : <></>
 }
 
