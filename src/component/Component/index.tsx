@@ -22,7 +22,6 @@ const Component: React.FC<ComponentParams> = ({name, type, id, computerId, withP
   const { user } = useAppSelector((state: RootState) => state.user);
   const { editMode } = useAppSelector((state: RootState) => state.computer);
   const dispatch = useAppDispatch();
-  console.log(user.status)
 
   const openModal = (currentComponentId='') => {
     dispatch(setModal({currentComponentId, isActive: true, type, computerId}));

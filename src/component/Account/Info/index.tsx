@@ -28,7 +28,11 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
   const [inputs, setInputs] = useState<{name: string; responsible: string; location: string}>({
     name: compName, responsible, location
   });
+  const [defaultInputs] = useState<{name: string; responsible: string; location: string}>({
+    name: compName, responsible, location
+  });
   const { allComponents, editMode } = useAppSelector(state => state.computer);
+  const { user } = useAppSelector(state => state.user);
   const [textArea, setTextArea] = useState('');
   
   const getComputers = async() => {
@@ -43,6 +47,18 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
 		}
 	}
 
+  const deleteHandler = async () => {
+    axios.delete(`/computers/delete/${id}`)
+    .then(() => {      
+        getComputers();
+        toast.success('Комп\'ютер видалено успішно!');
+    })
+    .catch((error) => {
+      toast.error(error.response.data.message);
+      console.error(error);
+    })
+	}
+
   const inputsChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setInputs((prevInputs) => ({
       ...prevInputs,
@@ -50,7 +66,10 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
     }))
   }
   const editClickHandler = () => {
-    dispatch(setEditMode(!editMode))
+    if(user?.status === 'admin' || user?.status === 'teacher') {
+      if(editMode) setInputs(defaultInputs);
+      dispatch(setEditMode(!editMode));
+    }
   }
   const handleSubmit = async() => {
     dispatch(setEditMode(false));
@@ -99,7 +118,7 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
         <textarea className='notes' value={textArea} onChange={(event) => {setTextArea(event.target.value); localStorage.setItem('textarea', textArea)}} />
         <div className='control_buttons'>
             <button className={`${editMode ? "active" : ""}`}>
-            {editMode ? 
+            { editMode ? 
               <>
                 <MdSaveAs onClick={handleSubmit}  className="btnIcon" color="#50577A"  />
               </>
@@ -110,17 +129,26 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
               }
             </button>
             <button className={`${editMode ? "red" : ""}`} onClick={() => editClickHandler()}>
-              {editMode ? 
-              <>
-                <AiOutlineClose className="btnIcon" color="aliceblue" />
-              </>
-              :
-              <>
-                <MdCreate className="btnIcon" color="aliceblue" />
-              </>
+              { (user?.status !== 'admin' && user?.status !== 'teacher' && !editMode) ?
+                <>
+                  <MdCreate  className="btnIcon" color="#6d759b"  />
+                </>
+                : editMode ? 
+                <>
+                  <AiOutlineClose className="btnIcon" color="aliceblue" />
+                </>
+                :
+                <>
+                  <MdCreate className="btnIcon" color="aliceblue" />
+                </>
               }
             </button>
-            <button><MdDeleteSweep className="btnIcon" color="aliceblue"/></button>
+            <button>
+              { (user?.status !== 'admin' && user?.status !== 'teacher') ?
+                <MdDeleteSweep onClick={deleteHandler} className="btnIcon" color="#6d759b"/>
+                : <MdDeleteSweep onClick={deleteHandler} className="btnIcon" color="aliceblue"/>
+              }
+            </button>
         </div>
       </div>
     </main>

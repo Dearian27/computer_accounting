@@ -80,8 +80,8 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
   const deleteHandler = async () => {
     axios.delete(`/components/delete/${component._id}`)
     .then(() => {      
-        getComputers();
-        toast.success('Компонент видалено успішно!');
+      getComputers();
+      toast.success('Компонент видалено успішно!');
     })
     .catch((error) => {
       toast.error(error.response.data.message);
