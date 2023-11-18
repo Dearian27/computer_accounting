@@ -11,12 +11,14 @@ const AdminModal = () => {
   const dispatch = useAppDispatch();
   const { user, adminModal } = useAppSelector((state: RootState) => state.user);
   const [users, setUsers] = useState<userAccountParams[]>([]);
+  const [animateStatus, setAnimateStatus] = useState<string>('');
   
   const closeModal = () => {
     dispatch(setAdminModal(false));
   }
 
-  const getUsers = () => {
+  const getUsers = (id:string = '-1') => {
+    setAnimateStatus(id);
     axios.get('/auth/')
     .then((res) => {      
       if(res.data.users) {
@@ -25,19 +27,18 @@ const AdminModal = () => {
     })
     .catch((error) => {
       toast.error(error.response.data.message);
-      console.error(error);
     })
   }
 
   useEffect(() => {
     getUsers();
-  })
+  }, [])
 
   return (
     <div style={{display: adminModal && user?.status === 'admin' ? 'flex' : 'none'}} className='adminModalWrapper' onClick={closeModal}>
       <section className="adminModal" onClick={(e) => e.stopPropagation()}>
         { users.map(user => {
-            return <User key={user._id} id={user._id} status={user.status} name={user.name} change={getUsers} />
+            return <User key={user._id} id={user._id} status={user.status} name={user.name} surname={user.surname} change={getUsers} animate={animateStatus} />
           })          
         }
       </section>

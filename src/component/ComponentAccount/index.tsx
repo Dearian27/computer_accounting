@@ -24,7 +24,6 @@ const ComponentAccount: React.FC<ComponentAccountParams> = ({ id, choosing=false
   const component:componentParams = allComponents.find((component: componentParams) => component._id === currentId);
   const [ computerName, setComputerName ] = useState<string>("");
   const { user } = useAppSelector((state: RootState) => state.user);
-  console.log(user)
 
   const getComputers = async() => {
 		try {

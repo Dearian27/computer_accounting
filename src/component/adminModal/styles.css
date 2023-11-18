@@ -10,6 +10,7 @@
   background-color: rgba(0, 0, 0, 0.653);
 }
 .adminModal {
+  overflow-y: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

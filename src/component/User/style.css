@@ -20,6 +20,13 @@
 .user .status {
   color: #9f9f9f;
   font-size: 16px;
+  animation: none;
+}
+.user .status.teacher {
+  animation: textHighLight 0.7s ease-in-out;
+}
+.user .status.viewer {
+  animation: textHighLight2 0.7s ease-in-out;
 }
 .user .name {
   color: white;
@@ -34,5 +41,26 @@
   height: 22px;
   width: 22px;
 } 
-.buttons .item:hover {
+
+@keyframes textHighLight {
+  0% {
+    color: #9f9f9f;
+  }
+  50% {
+    color: greenyellow;
+  }
+  100% {
+    color: #9f9f9f;
+  }
+}
+@keyframes textHighLight2 {
+  0% {
+    color: #9f9f9f;
+  }
+  50% {
+    color: greenyellow;
+  }
+  100% {
+    color: #9f9f9f;
+  }
 }
