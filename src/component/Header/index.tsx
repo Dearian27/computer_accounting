@@ -42,7 +42,7 @@ function Header() {
 		<div className="header">
 			<div style={{display: 'flex', gap: '15px', alignItems: 'center'}}>
 				<div className='change_buttons'>
-					<button onClick={() => navigate('/')} className={`tabBtn ${!location.pathname.startsWith('/components/') ? 'active' : ''}`}>
+					<button onClick={() => {setSearch('');navigate('/')}} className={`tabBtn ${!location.pathname.startsWith('/components/') ? 'active' : ''}`}>
 						{ !location.pathname.startsWith('/components/') ?
 							<>
 								<HiMiniComputerDesktop className="btnIcon" color="#6d759b" />
@@ -53,7 +53,7 @@ function Header() {
 							</>
 						}
 					</button>
-					<button onClick={() => navigate('/components/')} className={`tabBtn ${location.pathname.startsWith('/components/') ? 'active' : ''}`}>
+					<button onClick={() => {setSearch('');navigate('/components/')}} className={`tabBtn ${location.pathname.startsWith('/components/') ? 'active' : ''}`}>
 						{ location.pathname.startsWith('/components/') ?
 							<>
 								<IoHardwareChip  className="btnIcon" color="#6d759b"  />

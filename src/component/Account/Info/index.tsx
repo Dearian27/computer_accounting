@@ -104,7 +104,7 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
         </div>
       { components && allComponents &&
         components.map((componentsOneType, index: number) => {
-          if(componentsOneType?.id && componentsOneType?.id.length > 0 || (componentsOneType.type === 'ram' || componentsOneType.type === 'disk')) {
+          if((componentsOneType?.id && componentsOneType?.id.length > 0 && (componentsOneType.type === 'ram' || componentsOneType.type === 'disk')) || (componentsOneType.type === 'ram' || componentsOneType.type === 'disk')) {
             if(componentsOneType.id[0] === undefined) {
               return <Component key={index} name={''} type={componentsOneType.type} id={''} computerId={id} withPlus={true} />
             }
