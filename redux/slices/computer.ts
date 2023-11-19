@@ -9,6 +9,7 @@ export type ComputerParams = {
   history: historyParams,
   location: string,
   responsible: string,
+  notes: string
 }
 export type componentParams = {
   anchor: string,

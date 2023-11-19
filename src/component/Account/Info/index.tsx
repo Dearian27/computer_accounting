@@ -21,19 +21,19 @@ type AccountParams = {
 	location: string;
 	history: historyParams;
 	compName: string;
+  notes: string;
 }
 
-const Info: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
+const Info: React.FC<AccountParams> = ({ id, components, responsible, location, notes, history, compName}) => {
   const dispatch = useAppDispatch();
-  const [inputs, setInputs] = useState<{name: string; responsible: string; location: string}>({
-    name: compName, responsible, location
+  const [inputs, setInputs] = useState<{name: string; responsible: string; location: string, notes: string}>({
+    name: compName, responsible, location, notes
   });
-  const [defaultInputs] = useState<{name: string; responsible: string; location: string}>({
-    name: compName, responsible, location
+  const [defaultInputs] = useState<{name: string; responsible: string; location: string, notes: string}>({
+    name: compName, responsible, location, notes
   });
   const { allComponents, editMode } = useAppSelector(state => state.computer);
   const { user } = useAppSelector(state => state.user);
-  const [textArea, setTextArea] = useState('');
   
   const getComputers = async() => {
 		try {
@@ -59,7 +59,7 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
     })
 	}
 
-  const inputsChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const inputsChangeHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setInputs((prevInputs) => ({
       ...prevInputs,
       [event.target.name]: event.target.value
@@ -76,7 +76,8 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
     const res = await axios.post(`/computers/update/${id}`, {
       name: inputs.name,
       responsible: inputs.responsible,
-      location: inputs.location
+      location: inputs.location,
+      notes: inputs.notes,
     })
     if(res.status === 200) {
       toast.success(res.data.message); 
@@ -118,7 +119,7 @@ const Info: React.FC<AccountParams> = ({ id, components, responsible, location, 
       }
       </div>
       <div className='panel'>
-        <textarea className='notes' value={textArea} onChange={(event) => {setTextArea(event.target.value); localStorage.setItem('textarea', textArea)}} />
+        <textarea className='notes' name="notes" value={inputs.notes} onChange={(event) => {inputsChangeHandler(event)}} />
         <div className='control_buttons'>
             <button className={`${editMode ? "active" : ""}`}>
             { editMode ? 

@@ -44,7 +44,7 @@ function AccountContainer(){
 			<Routes>
         <Route path='/' element={
 						computers?.filter((computer: ComputerParams) => !searchText ? true : searchMatchesByComputer(computer, searchText, allComponents)).map((computer: ComputerParams) => {
-							return <Account id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
+							return <Account id={computer._id} key={computer._id} components={computer.components} notes={computer.notes} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
 						})
 				} />
 				<Route path='/:id' element={<Computer computers={computers} />} />

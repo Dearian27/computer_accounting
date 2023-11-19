@@ -15,9 +15,10 @@ type AccountParams = {
 	location: string;
 	history: historyParams;
 	compName: string;
+	notes: string;
 }
 
-const Account: React.FC<AccountParams> = ({ id, components, responsible, location, history, compName}) => {
+const Account: React.FC<AccountParams> = ({ id, components, responsible, location, history, notes, compName}) => {
   const { active } = useAppSelector(state => state.computer);
 
 	const dispatch = useAppDispatch();
@@ -46,7 +47,7 @@ const Account: React.FC<AccountParams> = ({ id, components, responsible, locatio
 						</button>
 					</div>
         {active.includes(id) &&
-					<Info id={id} components={components} responsible={responsible} location={location} history={history} compName={compName} />
+					<Info id={id} components={components} notes={notes} responsible={responsible} location={location} history={history} compName={compName} />
 				}
       </section>
         
