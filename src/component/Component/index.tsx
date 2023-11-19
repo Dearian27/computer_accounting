@@ -37,8 +37,8 @@ const Component: React.FC<ComponentParams> = ({name, type, id, computerId, withP
 			console.error(err);
 		}
 	}
-  const deleteHandler = async () => {
-    axios.delete(`/components/delete/${id}`)
+  const removeHandler = async () => {
+    axios.post(`/components/remove/${id}`)
     .then(() => {      
         getComputers();
         toast.success('Компонент видалено успішно!');
@@ -57,7 +57,7 @@ const Component: React.FC<ComponentParams> = ({name, type, id, computerId, withP
         { (user?.status === 'admin' || user?.status === 'teacher') && 
           <div className={`modal_btn ${'animate'}`}>
             {name &&
-              <button className={`item ${editMode ? 'animate' : 'none'}`} onClick={() => deleteHandler()}>
+              <button className={`item ${editMode ? 'animate' : 'none'}`} onClick={() => removeHandler()}>
                 <MdDeleteSweep className="btnIcon" color={user ? "aliceblue" : "grey"}/>
               </button>
             }
@@ -66,9 +66,11 @@ const Component: React.FC<ComponentParams> = ({name, type, id, computerId, withP
               <GoPlusCircle onClick={() => openModal()} />
             </div>
             }
+            { (name || (type !== 'disk' && type !== 'ram')) &&
             <div className={`item ${editMode ? 'animate' : 'none'}`}>
               <BiLinkExternal onClick={() => openModal(`${(type === 'ram' || type === 'disk') && id ? id : ''}`)} />
             </div>
+            }
           </div>
         }
       </button>

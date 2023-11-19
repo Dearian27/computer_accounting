@@ -62,6 +62,7 @@ const PlusModal: React.FC = () => {
     if(res.status === 200) {
       console.log(res);
       toast.success(res.data.message);
+      getComputers();
     } else {
       toast.error(res.data.message);
     }

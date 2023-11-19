@@ -43,13 +43,13 @@ function AccountContainer(){
 		<div className="AccountContainer">
 			<Routes>
         <Route path='/' element={
-						computers?.filter((computer: ComputerParams) => !searchText ? true : searchMatchesByComputer(computer, searchText)).map((computer: ComputerParams) => {
+						computers?.filter((computer: ComputerParams) => !searchText ? true : searchMatchesByComputer(computer, searchText, allComponents)).map((computer: ComputerParams) => {
 							return <Account id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
 						})
 				} />
 				<Route path='/:id' element={<Computer computers={computers} />} />
 				<Route path='/components/' element={
-					allComponents?.filter((component: componentParams) => !searchText ? true : searchMatchesByComponent(component, searchText)).map((component: componentParams) => {
+					allComponents?.filter((component: componentParams) => !searchText ? true : searchMatchesByComponent(component, searchText, component.anchor, computers)).map((component: componentParams) => {
 						return <ComponentAccount key={component._id} id={component._id} />
 					})
 				} />

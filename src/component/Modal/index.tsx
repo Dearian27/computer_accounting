@@ -9,13 +9,13 @@ import { searchMatchesByComponent } from '../../utils/search';
 
 const Modal: React.FC = () => {
   const [search, setSearch] = useState<string>("");
-  const { allComponents, modal } = useAppSelector((state: RootState) => state.computer);
+  const { allComponents, modal, computers } = useAppSelector((state: RootState) => state.computer);
   const [filteredComponents, setFilteredComponents] = useState<componentParams[]>(allComponents);
   const dispatch = useAppDispatch();
 
 	const debouncedHandleSearch = () => {
     if(search) {
-      const fComponents = allComponents.filter((component: componentParams) => searchMatchesByComponent(component, search));
+      const fComponents = allComponents.filter((component: componentParams) => searchMatchesByComponent(component, search, component.anchor, computers));
       setFilteredComponents(fComponents);
     } else {
       setFilteredComponents(allComponents);
