@@ -15,7 +15,7 @@ const Computer: React.FC<ComputerProps> = ({computers}) => {
   const computer = computers?.find((computer: ComputerParams) => computer._id === params.id);
   
   return computer ?
-    <Account id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
+    <Account notes={computer.notes} id={computer._id} key={computer._id} components={computer.components} responsible={computer.responsible} location={computer.location} history={computer.history} compName={computer.name} />
     : <></>
 }
 export default Computer;
