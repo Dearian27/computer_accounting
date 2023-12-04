@@ -38,13 +38,13 @@ const AuthModal: React.FC = () => {
     setSigninInputsParams(() => ({
       ...signinInputsParams,
       [event.target.name]: event.target.value
-    }))
+    }));
   }
   const signUpInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setSignupInputsParams(() => ({
       ...signupInputsParams,
       [event.target.name]: event.target.value
-    }))
+    }));
   }
 
   const submitSignIn = async() => {

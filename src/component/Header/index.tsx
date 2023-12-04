@@ -65,7 +65,7 @@ function Header() {
 						}
 					</button>
 				</div>
-				{user &&
+				{(user?.status === 'teacher' || user?.status === 'admin') &&
 					<button className='add_button' onClick={() => dispatch(setPModal(true))}>
 						<MdAddCircle className="btnIcon huge" />
 					</button>

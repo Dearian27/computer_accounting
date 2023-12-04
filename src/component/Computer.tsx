@@ -8,8 +8,6 @@ type ComputerProps = {
 
 const Computer: React.FC<ComputerProps> = ({computers}) => {
   const params = useParams();
-
-  
   
   if(!computers) return <>Завантаження...</>;
   const computer = computers?.find((computer: ComputerParams) => computer._id === params.id);

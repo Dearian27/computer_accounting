@@ -31,8 +31,10 @@ const AdminModal = () => {
   }
 
   useEffect(() => {
-    getUsers();
-  }, [])
+    if(adminModal) {
+      getUsers();
+    }
+  }, [adminModal])
 
   return (
     <div style={{display: adminModal && user?.status === 'admin' ? 'flex' : 'none'}} className='adminModalWrapper' onClick={closeModal}>
