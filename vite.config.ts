@@ -3,8 +3,8 @@ import path from 'node:path'
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  base: './', // або '/your-subdirectory/' якщо додаток розміщений в підкаталозі
   plugins: [
     react(),
     electron({

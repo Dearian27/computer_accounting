@@ -6,7 +6,6 @@ console.log();
 const instance = axios.create({
   // baseURL: 'http://localhost:8879/api',
   baseURL: `${import.meta.env.VITE_SERVER_URL}:${import.meta.env.VITE_PORT}/api/`,
-  // baseURL: `http://${process.env.SERVER_IP}:${process.env.PORT}/api/`,
   withCredentials: true,
   headers: {
     'Cache-Control': 'no-cache',

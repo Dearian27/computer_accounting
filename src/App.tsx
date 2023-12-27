@@ -14,7 +14,6 @@ function App() {
   return (
     
     <Provider store={store}>
-      
       <IconContext.Provider value={{ color: "white", className: "btnIcon"}}>
         <main style={{backgroundColor: '#404258'}}>
           <Header />
