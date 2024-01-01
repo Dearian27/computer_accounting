@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setSearchText } from '../../../redux/slices/computer';
-import { setAModal, setAdminModal, setPModal, setUser } from '../../../redux/slices/user';
+import { setAModal, setAdminModal, setIPModal, setPModal, setUser } from '../../../redux/slices/user';
 import { RootState } from '../../../redux/store';
 
 function Header() {
@@ -75,6 +75,9 @@ function Header() {
 						ADMIN
 					</button>
 				}
+				<button onClick={() => dispatch(setIPModal(true))} className='btnLogin btnIP' style={{fontWeight: '900'}}>
+					IP
+				</button>
 			</div>
 
 			<div className='search_line'>

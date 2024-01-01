@@ -88,7 +88,13 @@
 	color: white;
 	font-family: 'Fixel';
 	font-size: 22px;
-	padding: 0px 20px;
+	padding: 5px 20px 0 20px;
+}
+.btnIP {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 10px 0 10px;
 }
 .header .name {
 	font-size: 26px;

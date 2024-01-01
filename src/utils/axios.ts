@@ -1,11 +1,11 @@
 import axios from "axios";
 
-
-console.log();
+const server_ip = window.localStorage.getItem('server_ip');
 
 const instance = axios.create({
   // baseURL: 'http://localhost:8879/api',
-  baseURL: `${import.meta.env.VITE_SERVER_URL}:${import.meta.env.VITE_PORT}/api/`,
+  // baseURL: `${import.meta.env.VITE_SERVER_URL}:${import.meta.env.VITE_PORT}/api/`,
+  baseURL: `http://${server_ip}:${import.meta.env.VITE_PORT}/api/`,
   withCredentials: true,
   headers: {
     'Cache-Control': 'no-cache',

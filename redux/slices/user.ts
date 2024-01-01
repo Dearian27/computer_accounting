@@ -5,7 +5,8 @@ type userParams = {
   pModal: boolean,
   authModal: boolean,
   user: userAccountParams | null,
-  adminModal: boolean 
+  adminModal: boolean, 
+  ipModal: boolean,
 }
 export type userAccountParams = {
   _id: string,
@@ -23,6 +24,7 @@ const initialState: userParams = {
   authModal: false,
   user: storedUser ? JSON.parse(storedUser) : null,
   adminModal: false,
+  ipModal: false,
 } 
 
 const userSlice = createSlice({
@@ -43,9 +45,12 @@ const userSlice = createSlice({
     },
     setUser: (state: userParams, action: PayloadAction<userAccountParams | null>) => {
       state.user = action.payload;
+    },
+    setIPModal: (state: userParams, action: PayloadAction<boolean>) => {
+      state.ipModal = action.payload;
     }
   }
 })
 
-export const { setPModal, setAModal,  setUser, setAdminModal } = userSlice.actions;
+export const { setPModal, setAModal,  setUser, setAdminModal, setIPModal } = userSlice.actions;
 export default userSlice.reducer;

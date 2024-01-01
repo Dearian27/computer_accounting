@@ -9,6 +9,7 @@ import PlusModal from './component/plusModal';
 import AuthModal from './component/authModal';
 import { Toaster } from 'react-hot-toast';
 import AdminModal from './component/adminModal';
+import IPModal from './component/ipModal';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <PlusModal />
         <AuthModal />
         <AdminModal />
+        <IPModal />
         <Toaster
           position="bottom-center"
           reverseOrder={false}
